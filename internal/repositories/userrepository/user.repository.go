@@ -2,9 +2,7 @@ package userrepository
 
 import (
 	"context"
-	"fmt"
 	"template-go/internal/core/domain"
-	log "template-go/internal/logger"
 	db "template-go/internal/sqlc/repositories"
 )
 
@@ -30,7 +28,7 @@ func (userConfig UserConfig) CreateUser(user domain.User) (domain.User, error) {
 
 	createUser, err := userConfig.store.CreateUser(context.Background(), createUserParams)
 	if err != nil {
-		log.Logger.Error(fmt.Sprintf("Got an error receiving messages: %v", err))
+		return domain.User{}, err
 	}
 	rsp := domain.User{
 		Username: createUser.Username,

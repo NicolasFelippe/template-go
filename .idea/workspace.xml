@@ -4,35 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/app/internal/project.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/app/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/configs/app.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/configs/sqlc.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/config/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/core/domain/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/core/ports/repositories.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/core/ports/services.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/core/services/userservice/service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/handlers/usershandler/http.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/handlers/usershandler/user.dto.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/logger/logger.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repositories/userrepository/user.repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/server/http.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/server/routes/users.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/sqlc/query/user.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/sqlc/repositories/store.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/sqlc/sqlc.client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/uidgen.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template-go.iml" afterDir="false" />
+    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="init project hexagonal">
+      <change afterPath="$PROJECT_DIR$/pkg/password/password.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/password/password_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/util/util.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/services/userservice/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/userservice/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/server/routes/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/routes/users.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/uidgen.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/uidgen/uidgen.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +76,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\pkg\uidgen" />
+      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\pkg\password" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\cmd\app\internal" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\configs" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\cmd\app" />
@@ -121,9 +102,22 @@
       <filePath value="$PROJECT_DIR$/cmd/app/main.go" />
       <method v="2" />
     </configuration>
+    <configuration name="TestPassword in template-go/pkg/password" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="template-go" />
+      <working_directory value="$PROJECT_DIR$/pkg/password" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="template-go/pkg/password" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestPassword\E$" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Go Build.go build template-go/cmd/app" />
+        <item itemvalue="Go Test.TestPassword in template-go/pkg/password" />
         <item itemvalue="Go Build.go build template-go" />
       </list>
     </recent_temporary>
@@ -137,8 +131,23 @@
       <option name="presentableId" value="Default" />
       <updated>1672248592841</updated>
       <workItem from="1672248594582" duration="3186000" />
-      <workItem from="1672252234270" duration="12110000" />
+      <workItem from="1672252234270" duration="14576000" />
     </task>
+    <task id="LOCAL-00001" summary="init project hexagonal">
+      <created>1672265107376</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672265107376</updated>
+    </task>
+    <task id="LOCAL-00002" summary="init project hexagonal">
+      <created>1672265144093</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1672265144093</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +164,10 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init project hexagonal" />
+    <option name="LAST_COMMIT_MESSAGE" value="init project hexagonal" />
+  </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
   </component>
@@ -165,6 +178,16 @@
           <url>file://$PROJECT_DIR$/internal/handlers/usershandler/http.go</url>
           <line>2</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/handlers/usershandler/http.go</url>
+          <line>30</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/core/services/userservice/service.go</url>
+          <line>27</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

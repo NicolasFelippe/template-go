@@ -28,8 +28,12 @@ func (hdl *UserHTTPHandler) CreateUser(ctx *gin.Context) {
 	//	ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 	//	return
 	//}
-
-	rsp, err := hdl.userService.CreateUser(req)
+	rsp, err := hdl.userService.CreateUser(
+		req.Username,
+		req.Password,
+		req.FullName,
+		req.Email,
+	)
 
 	if err != nil {
 		if pqErr, ok := err.(*pq.Error); ok {

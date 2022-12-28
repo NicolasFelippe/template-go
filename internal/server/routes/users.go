@@ -7,7 +7,7 @@ import (
 	"template-go/internal/handlers/usershandler"
 	"template-go/internal/repositories/userrepository"
 	db "template-go/internal/sqlc/repositories"
-	uidgen "template-go/pkg"
+	"template-go/pkg/uidgen"
 )
 
 func InitUserRoutes(projectConfiguration config.Config, route *gin.Engine, store *db.SQLStore) {

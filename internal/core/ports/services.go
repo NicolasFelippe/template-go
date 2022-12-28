@@ -1,9 +1,14 @@
 package ports
 
 import (
-	"template-go/internal/handlers/usershandler"
+	"template-go/internal/core/domain"
 )
 
 type UserService interface {
-	CreateUser(user usershandler.RequestUserDTO) (usershandler.ResponseCreateUserDTO, error)
+	CreateUser(
+		username string,
+		password string,
+		fullName string,
+		email string,
+	) (domain.User, error)
 }

@@ -17,12 +17,12 @@ type User struct {
 
 func NewUser(id uuid.UUID, username string, hashedPassword string, fullName string, email string) User {
 	return User{
-		ID:                id,
-		Username:          username,
-		HashedPassword:    hashedPassword,
-		FullName:          fullName,
-		Email:             email,
-		CreatedAt:         time.Now(),
-		PasswordChangedAt: time.Date(0001, 01, 01, 00, 00, 00, 0, nil),
+		ID:             id,
+		Username:       username,
+		HashedPassword: hashedPassword,
+		FullName:       fullName,
+		Email:          email,
+		CreatedAt:      time.Now(),
+		//PasswordChangedAt: time.Date(0001, 01, 01, 00, 00, 00, 0, nil),
 	}
 }
