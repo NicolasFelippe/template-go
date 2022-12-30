@@ -47,9 +47,15 @@ func Run(f Flags) error {
 
 	runDBMigration(config.MigrationURL, config.DBSource)
 
-	_, err = ginHttp.Server(config, store)
+	server, err := ginHttp.NewServer(config, store)
 	if err != nil {
-		log.Logger.Error(fmt.Sprintf("Cannot run Http Server Error. %s", err))
+		log.Logger.Error(fmt.Sprintf("Cannot configure Http Server Error. %s", err))
+		return err
+	}
+
+	err = server.Start()
+	if err != nil {
+		log.Logger.Error(fmt.Sprintf("Cannot start Http Server Error. %s", err))
 		return err
 	}
 

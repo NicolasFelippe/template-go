@@ -7,20 +7,31 @@ import (
 	db "template-go/internal/sqlc/repositories"
 )
 
-func Server(projectConfiguration config.Config, store db.Store) (*gin.Engine, error) {
-	router := SetupRouter(projectConfiguration, store)
-
-	err := router.Run(projectConfiguration.HTTPServerAddress)
-	if err != nil {
-		return nil, err
-	}
-
-	return router, nil
+type Server struct {
+	config config.Config
+	store  db.Store
+	//tokenMaker token.Maker
+	router *gin.Engine
 }
 
-func SetupRouter(projectConfiguration config.Config, store db.Store) *gin.Engine {
+func NewServer(projectConfiguration config.Config, store db.Store) (*Server, error) {
+	router := SetupRouter(store)
+
+	server := &Server{
+		config: projectConfiguration,
+		store:  store,
+		router: router,
+	}
+	return server, nil
+}
+
+func (srv *Server) Start() error {
+	return srv.router.Run(srv.config.HTTPServerAddress)
+}
+
+func SetupRouter(store db.Store) *gin.Engine {
 	router := gin.Default()
-	routes.InitUserRoutes(projectConfiguration, router, store)
+	routes.InitUserRoutes(router, store)
 
 	return router
 }
