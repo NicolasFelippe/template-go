@@ -10,6 +10,7 @@ import (
 	"net/http/httptest"
 	"reflect"
 	"template-go/internal/config"
+
 	db "template-go/internal/sqlc/repositories"
 	mockdb "template-go/mocks/sqlc"
 	"template-go/pkg/crypto"
@@ -61,6 +62,8 @@ func (e eqCreateUserParamsMatcher) String() string {
 func EqCreateUserParams(arg db.CreateUserParams, password string) gomock.Matcher {
 	return eqCreateUserParamsMatcher{arg, password}
 }
+
+// TODO: verificar com o time se esse teste deveria ficar aqui mesmo. Estou com dúvida.
 
 func TestCreateUserAPI(t *testing.T) {
 	user, password := randomUser(t)

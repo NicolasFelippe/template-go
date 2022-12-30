@@ -1,4 +1,4 @@
-package usershandler
+package users_handler
 
 import (
 	"github.com/google/uuid"

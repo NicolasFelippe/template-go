@@ -1,4 +1,4 @@
-package userrepository
+package user
 
 import (
 	"context"
@@ -6,17 +6,17 @@ import (
 	db "template-go/internal/sqlc/repositories"
 )
 
-type UserConfig struct {
+type UserRepository struct {
 	store db.Store
 }
 
-func New(store db.Store) *UserConfig {
-	return &UserConfig{
+func New(store db.Store) *UserRepository {
+	return &UserRepository{
 		store: store,
 	}
 }
 
-func (userConfig UserConfig) CreateUser(user *domain.User) (*domain.User, error) {
+func (userConfig UserRepository) CreateUser(user *domain.User) (*domain.User, error) {
 
 	createUserParams := db.CreateUserParams{
 		ID:             user.ID,

@@ -8,7 +8,7 @@ import (
 	"os"
 	"template-go/internal/config"
 	log "template-go/internal/logger"
-	"template-go/internal/postgres"
+	"template-go/internal/postgre"
 	ginHttp "template-go/internal/server"
 	db "template-go/internal/sqlc/repositories"
 )
@@ -38,7 +38,7 @@ func Run(f Flags) error {
 	// Config log System
 	log.Initialize("./log/project.log", "DEBUG")
 
-	conn, err := postgres.NewConnectPostGres(config)
+	conn, err := postgre.NewConnect(config)
 	if err != nil {
 		return err
 	}
