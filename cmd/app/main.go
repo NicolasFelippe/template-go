@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	_ "github.com/golang/mock/mockgen/model"
 	"os"
 	project "template-go/cmd/app/internal"
 	log "template-go/internal/logger"

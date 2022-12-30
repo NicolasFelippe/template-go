@@ -3,20 +3,20 @@ package userservice
 import (
 	"template-go/internal/core/domain"
 	"template-go/internal/core/ports"
-	"template-go/pkg/password"
+	"template-go/pkg/crypto"
 	"template-go/pkg/uidgen"
 )
 
 type service struct {
 	userRepository ports.UserRepository
 	uidGen         uidgen.UIDGen
-	crypto         password.Crypto
+	crypto         crypto.Crypto
 }
 
 func New(
 	userRepository ports.UserRepository,
 	uidGen uidgen.UIDGen,
-	crypto password.Crypto,
+	crypto crypto.Crypto,
 ) *service {
 	return &service{
 		userRepository: userRepository,

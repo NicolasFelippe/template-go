@@ -31,6 +31,9 @@ major:
 createdb:
 	docker exec -it postgres12 createdb --username=root --owner=root go_template
 
+mock-sqlc:
+	mockgen -package mockdb  -destination=./mocks/sqlc/mock.store.go template-go/internal/sqlc/repositories Store
+
 sqlc:
 	sqlc -f ./configs/sqlc.yaml generate
 
@@ -49,4 +52,7 @@ migratedown:
 migratedown1:
 	migrate -path db/migration -database "$(DB_URL)" --verbose down 1
 
-.PHONY: sqlc migrateup migrateup1 migratedown migratedown1 create-migration patch minor major
+test:
+	go test -v -cover ./...
+
+.PHONY: sqlc mock-sqlc migrateup migrateup1 migratedown migratedown1 create-migration patch minor major test

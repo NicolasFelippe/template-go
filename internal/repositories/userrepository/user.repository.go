@@ -7,12 +7,12 @@ import (
 )
 
 type UserConfig struct {
-	store db.SQLStore
+	store db.Store
 }
 
-func New(store *db.SQLStore) *UserConfig {
+func New(store db.Store) *UserConfig {
 	return &UserConfig{
-		store: *store,
+		store: store,
 	}
 }
 
