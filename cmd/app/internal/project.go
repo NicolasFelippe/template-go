@@ -36,7 +36,7 @@ func Run(f Flags) error {
 	}
 
 	// Config log System
-	log.Initialize("./log/project.log", "info")
+	log.Initialize("./log/project.log", "DEBUG")
 
 	conn, err := postgres.NewConnectPostGres(config)
 	if err != nil {

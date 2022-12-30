@@ -15,8 +15,8 @@ type User struct {
 	CreatedAt         time.Time `json:"created_at"`
 }
 
-func NewUser(id uuid.UUID, username string, hashedPassword string, fullName string, email string) User {
-	return User{
+func NewUser(id uuid.UUID, username, hashedPassword, fullName, email string) *User {
+	return &User{
 		ID:             id,
 		Username:       username,
 		HashedPassword: hashedPassword,

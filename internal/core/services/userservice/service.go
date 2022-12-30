@@ -3,18 +3,25 @@ package userservice
 import (
 	"template-go/internal/core/domain"
 	"template-go/internal/core/ports"
+	"template-go/pkg/password"
 	"template-go/pkg/uidgen"
 )
 
 type service struct {
 	userRepository ports.UserRepository
 	uidGen         uidgen.UIDGen
+	crypto         password.Crypto
 }
 
-func New(userRepository ports.UserRepository, uidGen uidgen.UIDGen) *service {
+func New(
+	userRepository ports.UserRepository,
+	uidGen uidgen.UIDGen,
+	crypto password.Crypto,
+) *service {
 	return &service{
 		userRepository: userRepository,
 		uidGen:         uidGen,
+		crypto:         crypto,
 	}
 }
 
@@ -23,12 +30,17 @@ func (srv *service) CreateUser(
 	password string,
 	fullName string,
 	email string,
-) (domain.User, error) {
+) (*domain.User, error) {
+
+	hashedPassword, err := srv.crypto.HashPassword(password)
+	if err != nil {
+		return nil, err
+	}
 
 	userDomain := domain.NewUser(
 		srv.uidGen.New(),
 		username,
-		password,
+		hashedPassword,
 		fullName,
 		email,
 	)
@@ -36,7 +48,7 @@ func (srv *service) CreateUser(
 	result, err := srv.userRepository.CreateUser(userDomain)
 
 	if err != nil {
-		return domain.User{}, err
+		return nil, err
 	}
 
 	return result, nil

@@ -6,9 +6,9 @@ import (
 
 type UserService interface {
 	CreateUser(
-		username string,
-		password string,
-		fullName string,
+		username,
+		password,
+		fullName,
 		email string,
-	) (domain.User, error)
+	) (*domain.User, error)
 }

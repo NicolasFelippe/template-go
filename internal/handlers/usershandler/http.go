@@ -23,12 +23,8 @@ func (hdl *UserHTTPHandler) CreateUser(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return
 	}
-	//hashedPassword, err := util.HashPassword(req.Password)
-	//if err != nil {
-	//	ctx.JSON(http.StatusInternalServerError, errorResponse(err))
-	//	return
-	//}
-	rsp, err := hdl.userService.CreateUser(
+
+	result, err := hdl.userService.CreateUser(
 		req.Username,
 		req.Password,
 		req.FullName,
@@ -46,6 +42,9 @@ func (hdl *UserHTTPHandler) CreateUser(ctx *gin.Context) {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return
 	}
+
+	var rsp ResponseCreateUserDTO
+	rsp.FromDomain(result)
 
 	ctx.JSON(http.StatusOK, rsp)
 }

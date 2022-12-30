@@ -16,7 +16,7 @@ func New(store *db.SQLStore) *UserConfig {
 	}
 }
 
-func (userConfig UserConfig) CreateUser(user domain.User) (domain.User, error) {
+func (userConfig UserConfig) CreateUser(user *domain.User) (*domain.User, error) {
 
 	createUserParams := db.CreateUserParams{
 		ID:             user.ID,
@@ -26,14 +26,10 @@ func (userConfig UserConfig) CreateUser(user domain.User) (domain.User, error) {
 		Email:          user.Email,
 	}
 
-	createUser, err := userConfig.store.CreateUser(context.Background(), createUserParams)
+	_, err := userConfig.store.CreateUser(context.Background(), createUserParams)
 	if err != nil {
-		return domain.User{}, err
+		return nil, err
 	}
-	rsp := domain.User{
-		Username: createUser.Username,
-		FullName: createUser.FullName,
-		Email:    createUser.Email,
-	}
-	return rsp, nil
+
+	return user, nil
 }
