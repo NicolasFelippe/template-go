@@ -10,6 +10,7 @@ import (
 	"net/http/httptest"
 	"reflect"
 	"template-go/internal/config"
+	"template-go/pkg/makertoken/paseto"
 
 	db "template-go/internal/sqlc/repositories"
 	mockdb "template-go/mocks/sqlc"
@@ -222,7 +223,10 @@ func newServerTest(t *testing.T, store db.Store) *Server {
 		HTTPServerAddress:   "0.0.0.0:8080",
 	}
 
-	server, err := NewServer(configProject, store)
+	tokenMaker, err := paseto.New(configProject.TokenSymmectricKey)
+	require.NoError(t, err)
+
+	server, err := NewServer(configProject, store, tokenMaker)
 	require.NoError(t, err)
 	return server
 }
