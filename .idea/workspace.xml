@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add graphql">
-      <change afterPath="$PROJECT_DIR$/pkg/token/jwt/jwt.maker.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/token/maker.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/token/paseto/paseto.maker.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/token/payload.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/services/user.service/service_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/user.service/service_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/server/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/sqlc/repositories/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/repositories/user_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/crypto/crypto_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/crypto/crypto_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +85,7 @@
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\handlers\users.handler" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.go test template-go/internal/core/services/user.service (1)">
+  <component name="RunManager" selected="Go Test.go test template-go/pkg/makertoken/jwt">
     <configuration name="go build template-go/cmd/http" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="template-go" />
       <working_directory value="$PROJECT_DIR$" />
@@ -121,23 +118,23 @@
       <framework value="gotest" />
       <method v="2" />
     </configuration>
-    <configuration name="go test template-go/internal/core/services/user.service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="go test template-go/pkg/makertoken/jwt" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$/internal/core/services/user.service" />
+      <working_directory value="$PROJECT_DIR$/pkg/makertoken/jwt" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="template-go/internal/core/services/user.service" />
+      <package value="template-go/pkg/makertoken/jwt" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <method v="2" />
     </configuration>
-    <configuration name="go test template-go/pkg/crypto" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="go test template-go/pkg/makertoken/paseto" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$/pkg/crypto" />
+      <working_directory value="$PROJECT_DIR$/pkg/makertoken/paseto" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="template-go/pkg/crypto" />
+      <package value="template-go/pkg/makertoken/paseto" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
@@ -145,11 +142,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.go test template-go/pkg/makertoken/jwt" />
+        <item itemvalue="Go Test.go test template-go/pkg/makertoken/paseto" />
         <item itemvalue="Go Test.go test template-go/internal/core/services/user.service (1)" />
         <item itemvalue="Go Build.go build template-go/cmd/http" />
         <item itemvalue="Go Test.TestPasswordError in template-go/pkg/crypto" />
-        <item itemvalue="Go Test.go test template-go/pkg/crypto" />
-        <item itemvalue="Go Test.go test template-go/internal/core/services/user.service" />
       </list>
     </recent_temporary>
   </component>
@@ -172,7 +169,7 @@
       <workItem from="1672435200417" duration="9891000" />
       <workItem from="1672452461921" duration="2790000" />
       <workItem from="1672455626768" duration="5088000" />
-      <workItem from="1672486247163" duration="3011000" />
+      <workItem from="1672486247163" duration="3444000" />
     </task>
     <task id="LOCAL-00001" summary="init project hexagonal">
       <created>1672265107376</created>

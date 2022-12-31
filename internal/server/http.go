@@ -5,22 +5,24 @@ import (
 	"template-go/internal/config"
 	"template-go/internal/server/routes"
 	db "template-go/internal/sqlc/repositories"
+	"template-go/pkg/makertoken"
 )
 
 type Server struct {
-	config config.Config
-	store  db.Store
-	//tokenMaker makertoken.Maker
-	router *gin.Engine
+	config     config.Config
+	store      db.Store
+	tokenMaker makertoken.Maker
+	router     *gin.Engine
 }
 
-func NewServer(projectConfiguration config.Config, store db.Store) (*Server, error) {
+func NewServer(projectConfiguration config.Config, store db.Store, tokenMaker makertoken.Maker) (*Server, error) {
 	router := SetupRouter(store)
 
 	server := &Server{
-		config: projectConfiguration,
-		store:  store,
-		router: router,
+		config:     projectConfiguration,
+		store:      store,
+		router:     router,
+		tokenMaker: tokenMaker,
 	}
 	return server, nil
 }

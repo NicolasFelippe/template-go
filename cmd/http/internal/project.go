@@ -11,6 +11,7 @@ import (
 	"template-go/internal/postgre"
 	ginHttp "template-go/internal/server"
 	db "template-go/internal/sqlc/repositories"
+	"template-go/pkg/makertoken/paseto"
 )
 
 type Flags struct {
@@ -29,7 +30,6 @@ func Run(f Flags) error {
 		return err
 	}
 
-	// load project configuration
 	config, err := config.LoadConfig(f.ConfigurationFile)
 	if err != nil {
 		return err
@@ -40,6 +40,7 @@ func Run(f Flags) error {
 
 	conn, err := postgre.NewConnect(config)
 	if err != nil {
+		log.Logger.Error(fmt.Sprintf("Cannot configure Connection postgre Error. %s", err))
 		return err
 	}
 
@@ -47,7 +48,13 @@ func Run(f Flags) error {
 
 	runDBMigration(config.MigrationURL, config.DBSource)
 
-	server, err := ginHttp.NewServer(config, store)
+	tokenMaker, err := paseto.New(config.TokenSymmectricKey)
+	if err != nil {
+		log.Logger.Error(fmt.Sprintf("Cannot configure Token Maker Error. %s", err))
+		return err
+	}
+
+	server, err := ginHttp.NewServer(config, store, tokenMaker)
 	if err != nil {
 		log.Logger.Error(fmt.Sprintf("Cannot configure Http Server Error. %s", err))
 		return err
