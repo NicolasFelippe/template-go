@@ -14,6 +14,24 @@ import (
 	"testing"
 )
 
+var mockRepository *userrepositorymock.MockUserRepository
+var mockCrypto *cryptomock.MockCrypto
+var mockUidGen *uidgenmock.MockUIDGen
+var ctrl gomock.Controller
+var userService *service
+
+func setup(t *testing.T) func() {
+	ctrl := gomock.NewController(t)
+	mockCrypto = cryptomock.NewMockCrypto(ctrl)
+	mockUidGen = uidgenmock.NewMockUIDGen(ctrl)
+	mockRepository = userrepositorymock.NewMockUserRepository(ctrl)
+	userService = New(mockRepository, mockUidGen, mockCrypto)
+	return func() {
+		userService = nil
+		defer ctrl.Finish()
+	}
+}
+
 func randomUser(t *testing.T, crypt *cryptomock.MockCrypto) (user *domain.User, password string) {
 	password = util.RandomString(6)
 	hashedPassword, err := crypt.HashPassword(password)
@@ -29,21 +47,13 @@ func randomUser(t *testing.T, crypt *cryptomock.MockCrypto) (user *domain.User, 
 }
 
 func TestCreateUserSuccess(t *testing.T) {
-	ctrl := gomock.NewController(t)
-	defer ctrl.Finish()
+	teardown := setup(t)
+	defer teardown()
 
-	mockCrypto := cryptomock.NewMockCrypto(ctrl)
 	mockCrypto.EXPECT().HashPassword(gomock.Any()).Return("@hashedPassword", nil).AnyTimes()
-
-	mockUidGen := uidgenmock.NewMockUIDGen(ctrl)
 	mockUidGen.EXPECT().New().Return(uuid.UUID{})
-
 	user, password := randomUser(t, mockCrypto)
-
-	mockRepository := userrepositorymock.NewMockUserRepository(ctrl)
 	mockRepository.EXPECT().CreateUser(gomock.Any()).Return(user, nil).Times(1)
-
-	userService := New(mockRepository, mockUidGen, mockCrypto)
 	createUser, err := userService.CreateUser(user.Username, password, user.FullName, user.Email)
 
 	require.NoError(t, err)
@@ -56,19 +66,15 @@ func TestCreateUserSuccess(t *testing.T) {
 
 func TestCreateUserHashedPasswordError(t *testing.T) {
 	msgErrorHashedPassword := "failed to has crypto"
-	ctrl := gomock.NewController(t)
-	defer ctrl.Finish()
+	teardown := setup(t)
+	defer teardown()
 
-	mockCrypto := cryptomock.NewMockCrypto(ctrl)
 	mockCrypto.EXPECT().HashPassword(gomock.Any()).Return("", errors.New(msgErrorHashedPassword)).AnyTimes()
 
-	mockUidGen := uidgenmock.NewMockUIDGen(ctrl)
 	mockUidGen.EXPECT().New().Return(uuid.UUID{}).AnyTimes()
 
-	mockRepository := userrepositorymock.NewMockUserRepository(ctrl)
 	mockRepository.EXPECT().CreateUser(gomock.Any()).Return(nil, nil).AnyTimes()
 
-	userService := New(mockRepository, mockUidGen, mockCrypto)
 	createUser, err := userService.CreateUser(
 		util.RandomOwner(),
 		util.RandomString(6),
@@ -82,19 +88,15 @@ func TestCreateUserHashedPasswordError(t *testing.T) {
 }
 
 func TestCreateUserError(t *testing.T) {
-	ctrl := gomock.NewController(t)
-	defer ctrl.Finish()
+	teardown := setup(t)
+	defer teardown()
 
-	mockCrypto := cryptomock.NewMockCrypto(ctrl)
 	mockCrypto.EXPECT().HashPassword(gomock.Any()).Return("@hashedPassword", nil).AnyTimes()
 
-	mockUidGen := uidgenmock.NewMockUIDGen(ctrl)
 	mockUidGen.EXPECT().New().Return(uuid.UUID{}).AnyTimes()
 
-	mockRepository := userrepositorymock.NewMockUserRepository(ctrl)
 	mockRepository.EXPECT().CreateUser(gomock.Any()).Return(nil, &pq.Error{Code: "23505"}).AnyTimes()
 
-	userService := New(mockRepository, mockUidGen, mockCrypto)
 	createUser, err := userService.CreateUser(
 		util.RandomOwner(),
 		util.RandomString(6),
