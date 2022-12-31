@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add test service user">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/app/internal/flags.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/http/internal/flags.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/app/internal/project.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/http/internal/project.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/app/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/http/main.go" afterDir="false" />
-    </list>
+    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add husky" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -170,7 +165,7 @@
       <workItem from="1672425898593" duration="73000" />
       <workItem from="1672426001848" duration="193000" />
       <workItem from="1672435200417" duration="9891000" />
-      <workItem from="1672452461921" duration="709000" />
+      <workItem from="1672452461921" duration="1177000" />
     </task>
     <task id="LOCAL-00001" summary="init project hexagonal">
       <created>1672265107376</created>
@@ -261,7 +256,8 @@
     <MESSAGE value="add test user http handler" />
     <MESSAGE value="generate mock and tests" />
     <MESSAGE value="add test service user" />
-    <option name="LAST_COMMIT_MESSAGE" value="add test service user" />
+    <MESSAGE value="add husky" />
+    <option name="LAST_COMMIT_MESSAGE" value="add husky" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

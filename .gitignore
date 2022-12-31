@@ -28,10 +28,4 @@ go.work
 *.log
 # End of https://www.toptal.com/developers/gitignore/api/go
 
-/.idea/dataSources/865a7182-d533-4f4a-b1b4-993bdf501871.xml
-/.idea/dataSources.local.xml
-/.idea/dataSources.xml
-/.idea/dataSources/865a7182-d533-4f4a-b1b4-993bdf501871/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta
-/.idea/dataSources/865a7182-d533-4f4a-b1b4-993bdf501871/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta
-/.idea/dataSources/865a7182-d533-4f4a-b1b4-993bdf501871/storage_v2/_src_/database/postgres.edMnLQ.meta
-/.idea/sqldialects.xml
+/.idea

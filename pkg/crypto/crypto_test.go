@@ -1,7 +1,7 @@
 package crypto
 
 import (
-	"template-go/pkg/util"
+	"template-go/pkg/random"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -15,7 +15,7 @@ func init() {
 }
 
 func TestPassword(t *testing.T) {
-	password := util.RandomString(6)
+	password := random.RandomString(6)
 	hashedPassword1, err := crypt.HashPassword(password)
 	require.NoError(t, err)
 	require.NotEmpty(t, hashedPassword1)
@@ -23,7 +23,7 @@ func TestPassword(t *testing.T) {
 	err = crypt.CheckPassword(password, hashedPassword1)
 	require.NoError(t, err)
 
-	wrongPassword := util.RandomString(6)
+	wrongPassword := random.RandomString(6)
 	err = crypt.CheckPassword(wrongPassword, hashedPassword1)
 	require.EqualError(t, err, bcrypt.ErrMismatchedHashAndPassword.Error())
 

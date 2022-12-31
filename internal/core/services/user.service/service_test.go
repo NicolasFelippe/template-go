@@ -10,7 +10,7 @@ import (
 	cryptomock "template-go/mocks/pkg/crypto"
 	uidgenmock "template-go/mocks/pkg/uidgen"
 	userrepositorymock "template-go/mocks/repositories"
-	"template-go/pkg/util"
+	"template-go/pkg/random"
 	"testing"
 )
 
@@ -33,15 +33,15 @@ func setup(t *testing.T) func() {
 }
 
 func randomUser(t *testing.T, crypt *cryptomock.MockCrypto) (user *domain.User, password string) {
-	password = util.RandomString(6)
+	password = random.RandomString(6)
 	hashedPassword, err := crypt.HashPassword(password)
 	require.NoError(t, err)
 
 	user = &domain.User{
-		Username:       util.RandomOwner(),
+		Username:       random.RandomOwner(),
 		HashedPassword: hashedPassword,
-		FullName:       util.RandomOwner(),
-		Email:          util.RandomEmail(),
+		FullName:       random.RandomOwner(),
+		Email:          random.RandomEmail(),
 	}
 	return
 }
@@ -76,10 +76,10 @@ func TestCreateUserHashedPasswordError(t *testing.T) {
 	mockRepository.EXPECT().CreateUser(gomock.Any()).Return(nil, nil).AnyTimes()
 
 	createUser, err := userService.CreateUser(
-		util.RandomOwner(),
-		util.RandomString(6),
-		util.RandomOwner(),
-		util.RandomEmail(),
+		random.RandomOwner(),
+		random.RandomString(6),
+		random.RandomOwner(),
+		random.RandomEmail(),
 	)
 
 	require.Error(t, err)
@@ -98,10 +98,10 @@ func TestCreateUserError(t *testing.T) {
 	mockRepository.EXPECT().CreateUser(gomock.Any()).Return(nil, &pq.Error{Code: "23505"}).AnyTimes()
 
 	createUser, err := userService.CreateUser(
-		util.RandomOwner(),
-		util.RandomString(6),
-		util.RandomOwner(),
-		util.RandomEmail(),
+		random.RandomOwner(),
+		random.RandomString(6),
+		random.RandomOwner(),
+		random.RandomEmail(),
 	)
 	pqError := err.(*pq.Error)
 	require.Error(t, err)

@@ -14,8 +14,8 @@ import (
 	db "template-go/internal/sqlc/repositories"
 	mockdb "template-go/mocks/sqlc"
 	"template-go/pkg/crypto"
+	"template-go/pkg/random"
 	"template-go/pkg/uidgen"
-	"template-go/pkg/util"
 	"testing"
 	"time"
 
@@ -217,7 +217,7 @@ func TestCreateUserAPI(t *testing.T) {
 
 func newServerTest(t *testing.T, store db.Store) *Server {
 	configProject := config.Config{
-		TokenSymmectricKey:  util.RandomString(32),
+		TokenSymmectricKey:  random.RandomString(32),
 		AccessTokenDuration: time.Minute,
 		HTTPServerAddress:   "0.0.0.0:8080",
 	}
@@ -228,15 +228,15 @@ func newServerTest(t *testing.T, store db.Store) *Server {
 }
 
 func randomUser(t *testing.T) (user db.User, password string) {
-	password = util.RandomString(6)
+	password = random.RandomString(6)
 	hashedPassword, err := crypt.HashPassword(password)
 	require.NoError(t, err)
 
 	user = db.User{
-		Username:       util.RandomOwner(),
+		Username:       random.RandomOwner(),
 		HashedPassword: hashedPassword,
-		FullName:       util.RandomOwner(),
-		Email:          util.RandomEmail(),
+		FullName:       random.RandomOwner(),
+		Email:          random.RandomEmail(),
 	}
 	return
 }

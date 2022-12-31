@@ -4,8 +4,8 @@ import (
 	"context"
 	"database/sql"
 	"template-go/pkg/crypto"
+	"template-go/pkg/random"
 	"template-go/pkg/uidgen"
-	"template-go/pkg/util"
 	"testing"
 	"time"
 
@@ -21,7 +21,7 @@ func init() {
 }
 
 func createRandomUser(t *testing.T) User {
-	hashedPassword, err := crypt.HashPassword(util.RandomString(6))
+	hashedPassword, err := crypt.HashPassword(random.RandomString(6))
 	require.NoError(t, err)
 
 	uid := uidge.New()
@@ -29,10 +29,10 @@ func createRandomUser(t *testing.T) User {
 
 	arg := CreateUserParams{
 		ID:             uid,
-		Username:       util.RandomOwner(),
+		Username:       random.RandomOwner(),
 		HashedPassword: hashedPassword,
-		FullName:       util.RandomOwner(),
-		Email:          util.RandomEmail(),
+		FullName:       random.RandomOwner(),
+		Email:          random.RandomEmail(),
 	}
 
 	user, err := testQueries.CreateUser(context.Background(), arg)
@@ -70,7 +70,7 @@ func TestGetUser(t *testing.T) {
 func TestUpdateUser(t *testing.T) {
 	oldUser := createRandomUser(t)
 
-	newFullName := util.RandomOwner()
+	newFullName := random.RandomOwner()
 	updateUser, err := testQueries.UpdateUser(context.Background(), UpdateUserParams{
 		Username: oldUser.Username,
 		FullName: sql.NullString{
@@ -89,7 +89,7 @@ func TestUpdateUser(t *testing.T) {
 func TestUpdateUserOnlyEmail(t *testing.T) {
 	oldUser := createRandomUser(t)
 
-	newEmail := util.RandomEmail()
+	newEmail := random.RandomEmail()
 	updateUser, err := testQueries.UpdateUser(context.Background(), UpdateUserParams{
 		Username: oldUser.Username,
 		Email: sql.NullString{
@@ -108,7 +108,7 @@ func TestUpdateUserOnlyEmail(t *testing.T) {
 func TestUpdateUserOnlyPassword(t *testing.T) {
 	oldUser := createRandomUser(t)
 
-	newPassword := util.RandomString(6)
+	newPassword := random.RandomString(6)
 	newHashedPassword, err := crypt.HashPassword(newPassword)
 	require.NoError(t, err)
 
@@ -130,9 +130,9 @@ func TestUpdateUserOnlyPassword(t *testing.T) {
 func TestUpdateUserAllFields(t *testing.T) {
 	oldUser := createRandomUser(t)
 
-	newEmail := util.RandomEmail()
-	newFullName := util.RandomOwner()
-	newPassword := util.RandomString(6)
+	newEmail := random.RandomEmail()
+	newFullName := random.RandomOwner()
+	newPassword := random.RandomString(6)
 	newHashedPassword, err := crypt.HashPassword(newPassword)
 	require.NoError(t, err)
 
