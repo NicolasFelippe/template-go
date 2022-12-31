@@ -53,3 +53,7 @@ func (srv *service) CreateUser(
 
 	return result, nil
 }
+
+func (srv *service) ListUsers(limit, offset *int) ([]*domain.User, error) {
+	return srv.userRepository.Users(limit, offset)
+}

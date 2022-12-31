@@ -34,3 +34,8 @@ func (td *ResponseCreateUserDTO) FromDomain(user *domain.User) {
 	td.CreatedAt = user.CreatedAt
 	td.PasswordChangedAt = user.PasswordChangedAt
 }
+
+type listUsersRequest struct {
+	PageID   int `form:"page_id" binding:"required,min=1"`
+	PageSize int `form:"page_size" binding:"required,min=5,max=10"`
+}

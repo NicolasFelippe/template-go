@@ -5,12 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add husky">
-      <change afterPath="$PROJECT_DIR$/tools/gqlgen.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/server/routes/graphql.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/crypto/crypto_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/crypto/crypto_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/random/random_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/random/random_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/ports/repositories.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/ports/repositories.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/ports/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/ports/services.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/services/user.service/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/user.service/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/services/user.service/service_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/user.service/service_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/handlers/users.handler/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/users.handler/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/handlers/users.handler/user.dto.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/users.handler/user.dto.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/user/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/user/repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/server/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/server/routes/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/routes/users.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/sqlc/query/user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/query/user.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/sqlc/repositories/querier.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/repositories/querier.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/sqlc/repositories/user.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/repositories/user.sql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocks/repositories/mock.userrepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/mocks/repositories/mock.userrepository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocks/sqlc/mock.store.go" beforeDir="false" afterPath="$PROJECT_DIR$/mocks/sqlc/mock.store.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,17 +99,14 @@
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\handlers\usershandler" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestPasswordError in template-go/pkg/crypto">
-    <configuration name="TestCreateUserSuccess in template-go/internal/core/services/user.service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.go test template-go/internal/core/services/user.service (1)">
+    <configuration name="go build template-go/cmd/http" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$/internal/core/services/user.service" />
-      <root_directory value="$PROJECT_DIR$" />
+      <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="template-go/internal/core/services/user.service" />
+      <package value="template-go/cmd/http" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTestCreateUserSuccess\E$" />
+      <filePath value="$PROJECT_DIR$/cmd/http/main.go" />
       <method v="2" />
     </configuration>
     <configuration name="TestPasswordError in template-go/pkg/crypto" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -110,6 +119,17 @@
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <pattern value="^\QTestPasswordError\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test template-go/internal/core/services/user.service (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="template-go" />
+      <working_directory value="$PROJECT_DIR$/internal/core/services/user.service" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="template-go/internal/core/services/user.service" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <configuration name="go test template-go/internal/core/services/user.service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -134,24 +154,13 @@
       <framework value="gotest" />
       <method v="2" />
     </configuration>
-    <configuration name="go test template-go/pkg/uidgen" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$/pkg/uidgen" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="template-go/pkg/uidgen" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.go test template-go/internal/core/services/user.service (1)" />
+        <item itemvalue="Go Build.go build template-go/cmd/http" />
         <item itemvalue="Go Test.TestPasswordError in template-go/pkg/crypto" />
         <item itemvalue="Go Test.go test template-go/pkg/crypto" />
         <item itemvalue="Go Test.go test template-go/internal/core/services/user.service" />
-        <item itemvalue="Go Test.TestCreateUserSuccess in template-go/internal/core/services/user.service" />
-        <item itemvalue="Go Test.go test template-go/pkg/uidgen" />
       </list>
     </recent_temporary>
   </component>
@@ -172,7 +181,9 @@
       <workItem from="1672425898593" duration="73000" />
       <workItem from="1672426001848" duration="193000" />
       <workItem from="1672435200417" duration="9891000" />
-      <workItem from="1672452461921" duration="1911000" />
+      <workItem from="1672452461921" duration="2790000" />
+      <workItem from="1672455626768" duration="5088000" />
+      <workItem from="1672486247163" duration="1487000" />
     </task>
     <task id="LOCAL-00001" summary="init project hexagonal">
       <created>1672265107376</created>
@@ -274,18 +285,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/internal/core/services/user.service/service_test.go</url>
-          <line>48</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/core/services/user.service/service_test.go</url>
-          <line>77</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/core/services/user.service/service_test.go</url>
           <line>105</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/graph/schema.resolvers.go</url>
+          <line>14</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/server/routes/graphql.go</url>
+          <line>35</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

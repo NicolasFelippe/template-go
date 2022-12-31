@@ -33,3 +33,27 @@ func (userConfig UserRepository) CreateUser(user *domain.User) (*domain.User, er
 
 	return user, nil
 }
+
+func (userConfig UserRepository) Users(limit, offset *int) ([]*domain.User, error) {
+	var listUsersParams = db.ListUsersParams{
+		Limit:  int32(*limit),
+		Offset: int32(*offset),
+	}
+	result, err := userConfig.store.ListUsers(context.Background(), listUsersParams)
+	if err != nil {
+		return nil, err
+	}
+
+	var users []*domain.User
+	for _, user := range result {
+		users = append(users, &domain.User{
+			ID:                user.ID,
+			FullName:          user.FullName,
+			Username:          user.Username,
+			Email:             user.Email,
+			PasswordChangedAt: user.PasswordChangedAt,
+			CreatedAt:         user.CreatedAt,
+		})
+	}
+	return users, nil
+}

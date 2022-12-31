@@ -11,4 +11,5 @@ type UserService interface {
 		fullName,
 		email string,
 	) (*domain.User, error)
+	ListUsers(limit, offset *int) ([]*domain.User, error)
 }

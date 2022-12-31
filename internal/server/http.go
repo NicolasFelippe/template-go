@@ -32,6 +32,6 @@ func (srv *Server) Start() error {
 func SetupRouter(store db.Store) *gin.Engine {
 	router := gin.Default()
 	routes.InitUserRoutes(router, store)
-
+	routes.InitGraphQlRoutes(router, store)
 	return router
 }

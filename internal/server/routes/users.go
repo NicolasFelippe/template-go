@@ -17,4 +17,5 @@ func InitUserRoutes(route *gin.Engine, store db.Store) {
 
 	groupRoute := route.Group("/api/v1")
 	groupRoute.POST("/users", handler.CreateUser)
+	groupRoute.GET("/users", handler.ListUsers)
 }

@@ -49,6 +49,30 @@ func (hdl *UserHTTPHandler) CreateUser(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, rsp)
 }
 
+func (hdl *UserHTTPHandler) ListUsers(ctx *gin.Context) {
+	var req listUsersRequest
+	if err := ctx.ShouldBindQuery(&req); err != nil {
+		ctx.JSON(http.StatusBadRequest, errorResponse(err))
+		return
+	}
+
+	offset := (req.PageID - 1) * req.PageSize
+	result, err := hdl.userService.ListUsers(
+		&req.PageSize,
+		&offset,
+	)
+
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+
+	//var rsp ResponseCreateUserDTO
+	//rsp.FromDomain(result)
+
+	ctx.JSON(http.StatusOK, result)
+}
+
 func errorResponse(err error) gin.H {
 	return gin.H{"error": err.Error()}
 }

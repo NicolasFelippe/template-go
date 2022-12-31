@@ -37,6 +37,9 @@ mock:
 	mockgen -package cryptomock  -destination=./mocks/pkg/crypto/mock.crypto.go template-go/pkg/crypto Crypto
 	mockgen -package uidgenmock  -destination=./mocks/pkg/uidgen/mock.uidgen.go template-go/pkg/uidgen UIDGen
 
+gqlgen:
+	go run github.com/99designs/gqlgen generate
+
 sqlc:
 	sqlc -f ./configs/sqlc.yaml generate
 
@@ -58,4 +61,4 @@ migratedown1:
 test:
 	go test -v -cover ./...
 
-.PHONY: sqlc mock mock1 migrateup migrateup1 migratedown migratedown1 create-migration patch minor major test
+.PHONY: sqlc mock gqlgen mock1 migrateup migrateup1 migratedown migratedown1 create-migration patch minor major test

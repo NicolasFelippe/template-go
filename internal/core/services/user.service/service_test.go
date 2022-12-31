@@ -17,7 +17,6 @@ import (
 var mockRepository *userrepositorymock.MockUserRepository
 var mockCrypto *cryptomock.MockCrypto
 var mockUidGen *uidgenmock.MockUIDGen
-var ctrl gomock.Controller
 var userService *service
 
 func setup(t *testing.T) func() {
@@ -46,7 +45,7 @@ func randomUser(t *testing.T, crypt *cryptomock.MockCrypto) (user *domain.User, 
 	return
 }
 
-func TestCreateUserSuccess(t *testing.T) {
+func Test_Should_CreateUser_When_SendParameters_Then_Success(t *testing.T) {
 	teardown := setup(t)
 	defer teardown()
 
@@ -64,7 +63,7 @@ func TestCreateUserSuccess(t *testing.T) {
 	require.Equal(t, createUser.HashedPassword, user.HashedPassword)
 }
 
-func TestCreateUserHashedPasswordError(t *testing.T) {
+func Test_Should_CreateUser_When_SendParameters_Then_FailedCrypto(t *testing.T) {
 	msgErrorHashedPassword := "failed to has crypto"
 	teardown := setup(t)
 	defer teardown()
@@ -87,7 +86,7 @@ func TestCreateUserHashedPasswordError(t *testing.T) {
 	require.ErrorContains(t, err, msgErrorHashedPassword)
 }
 
-func TestCreateUserError(t *testing.T) {
+func Test_Should_CreateUserDuplicate_When_SendDuplicateName_Then_ErrorUniqueViolation(t *testing.T) {
 	teardown := setup(t)
 	defer teardown()
 
