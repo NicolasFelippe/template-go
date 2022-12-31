@@ -32,15 +32,15 @@ func setup(t *testing.T) func() {
 }
 
 func randomUser(t *testing.T, crypt *cryptomock.MockCrypto) (user *domain.User, password string) {
-	password = random.RandomString(6)
+	password = random.String(6)
 	hashedPassword, err := crypt.HashPassword(password)
 	require.NoError(t, err)
 
 	user = &domain.User{
-		Username:       random.RandomOwner(),
+		Username:       random.Owner(),
 		HashedPassword: hashedPassword,
-		FullName:       random.RandomOwner(),
-		Email:          random.RandomEmail(),
+		FullName:       random.Owner(),
+		Email:          random.Email(),
 	}
 	return
 }
@@ -75,10 +75,10 @@ func Test_Should_CreateUser_When_SendParameters_Then_FailedCrypto(t *testing.T) 
 	mockRepository.EXPECT().CreateUser(gomock.Any()).Return(nil, nil).AnyTimes()
 
 	createUser, err := userService.CreateUser(
-		random.RandomOwner(),
-		random.RandomString(6),
-		random.RandomOwner(),
-		random.RandomEmail(),
+		random.Owner(),
+		random.String(6),
+		random.Owner(),
+		random.Email(),
 	)
 
 	require.Error(t, err)
@@ -97,10 +97,10 @@ func Test_Should_CreateUserDuplicate_When_SendDuplicateName_Then_ErrorUniqueViol
 	mockRepository.EXPECT().CreateUser(gomock.Any()).Return(nil, &pq.Error{Code: "23505"}).AnyTimes()
 
 	createUser, err := userService.CreateUser(
-		random.RandomOwner(),
-		random.RandomString(6),
-		random.RandomOwner(),
-		random.RandomEmail(),
+		random.Owner(),
+		random.String(6),
+		random.Owner(),
+		random.Email(),
 	)
 	pqError := err.(*pq.Error)
 	require.Error(t, err)

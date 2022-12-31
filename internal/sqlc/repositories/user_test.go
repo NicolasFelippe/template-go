@@ -21,7 +21,7 @@ func init() {
 }
 
 func createRandomUser(t *testing.T) User {
-	hashedPassword, err := crypt.HashPassword(random.RandomString(6))
+	hashedPassword, err := crypt.HashPassword(random.String(6))
 	require.NoError(t, err)
 
 	uid := uidge.New()
@@ -29,10 +29,10 @@ func createRandomUser(t *testing.T) User {
 
 	arg := CreateUserParams{
 		ID:             uid,
-		Username:       random.RandomOwner(),
+		Username:       random.Owner(),
 		HashedPassword: hashedPassword,
-		FullName:       random.RandomOwner(),
-		Email:          random.RandomEmail(),
+		FullName:       random.Owner(),
+		Email:          random.Email(),
 	}
 
 	user, err := testQueries.CreateUser(context.Background(), arg)
@@ -70,7 +70,7 @@ func TestGetUser(t *testing.T) {
 func TestUpdateUser(t *testing.T) {
 	oldUser := createRandomUser(t)
 
-	newFullName := random.RandomOwner()
+	newFullName := random.Owner()
 	updateUser, err := testQueries.UpdateUser(context.Background(), UpdateUserParams{
 		Username: oldUser.Username,
 		FullName: sql.NullString{
@@ -89,7 +89,7 @@ func TestUpdateUser(t *testing.T) {
 func TestUpdateUserOnlyEmail(t *testing.T) {
 	oldUser := createRandomUser(t)
 
-	newEmail := random.RandomEmail()
+	newEmail := random.Email()
 	updateUser, err := testQueries.UpdateUser(context.Background(), UpdateUserParams{
 		Username: oldUser.Username,
 		Email: sql.NullString{
@@ -108,7 +108,7 @@ func TestUpdateUserOnlyEmail(t *testing.T) {
 func TestUpdateUserOnlyPassword(t *testing.T) {
 	oldUser := createRandomUser(t)
 
-	newPassword := random.RandomString(6)
+	newPassword := random.String(6)
 	newHashedPassword, err := crypt.HashPassword(newPassword)
 	require.NoError(t, err)
 
@@ -130,9 +130,9 @@ func TestUpdateUserOnlyPassword(t *testing.T) {
 func TestUpdateUserAllFields(t *testing.T) {
 	oldUser := createRandomUser(t)
 
-	newEmail := random.RandomEmail()
-	newFullName := random.RandomOwner()
-	newPassword := random.RandomString(6)
+	newEmail := random.Email()
+	newFullName := random.Owner()
+	newPassword := random.String(6)
 	newHashedPassword, err := crypt.HashPassword(newPassword)
 	require.NoError(t, err)
 

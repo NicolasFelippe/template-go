@@ -217,7 +217,7 @@ func TestCreateUserAPI(t *testing.T) {
 
 func newServerTest(t *testing.T, store db.Store) *Server {
 	configProject := config.Config{
-		TokenSymmectricKey:  random.RandomString(32),
+		TokenSymmectricKey:  random.String(32),
 		AccessTokenDuration: time.Minute,
 		HTTPServerAddress:   "0.0.0.0:8080",
 	}
@@ -228,15 +228,15 @@ func newServerTest(t *testing.T, store db.Store) *Server {
 }
 
 func randomUser(t *testing.T) (user db.User, password string) {
-	password = random.RandomString(6)
+	password = random.String(6)
 	hashedPassword, err := crypt.HashPassword(password)
 	require.NoError(t, err)
 
 	user = db.User{
-		Username:       random.RandomOwner(),
+		Username:       random.Owner(),
 		HashedPassword: hashedPassword,
-		FullName:       random.RandomOwner(),
-		Email:          random.RandomEmail(),
+		FullName:       random.Owner(),
+		Email:          random.Email(),
 	}
 	return
 }

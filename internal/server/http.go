@@ -10,7 +10,7 @@ import (
 type Server struct {
 	config config.Config
 	store  db.Store
-	//tokenMaker token.Maker
+	//tokenMaker makertoken.Maker
 	router *gin.Engine
 }
 

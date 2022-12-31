@@ -4,25 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add husky">
-      <change afterPath="$PROJECT_DIR$/internal/server/routes/graphql.go" afterDir="false" />
+    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add graphql">
+      <change afterPath="$PROJECT_DIR$/pkg/token/jwt/jwt.maker.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/token/maker.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/token/paseto/paseto.maker.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/token/payload.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/ports/repositories.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/ports/repositories.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/ports/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/ports/services.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/services/user.service/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/user.service/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/services/user.service/service_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/user.service/service_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/handlers/users.handler/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/users.handler/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/handlers/users.handler/user.dto.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/users.handler/user.dto.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/repositories/user/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/user/repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/server/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/server/routes/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/routes/users.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/sqlc/query/user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/query/user.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/sqlc/repositories/querier.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/repositories/querier.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/sqlc/repositories/user.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/repositories/user.sql.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mocks/repositories/mock.userrepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/mocks/repositories/mock.userrepository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mocks/sqlc/mock.store.go" beforeDir="false" afterPath="$PROJECT_DIR$/mocks/sqlc/mock.store.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,11 +81,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\pkg\token\paseto" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\cmd\http" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\server" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\handlers\users.handler" />
-      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\handlers\usershandler" />
     </key>
   </component>
   <component name="RunManager" selected="Go Test.go test template-go/internal/core/services/user.service (1)">
@@ -183,7 +172,7 @@
       <workItem from="1672435200417" duration="9891000" />
       <workItem from="1672452461921" duration="2790000" />
       <workItem from="1672455626768" duration="5088000" />
-      <workItem from="1672486247163" duration="1487000" />
+      <workItem from="1672486247163" duration="3011000" />
     </task>
     <task id="LOCAL-00001" summary="init project hexagonal">
       <created>1672265107376</created>
@@ -275,7 +264,8 @@
     <MESSAGE value="generate mock and tests" />
     <MESSAGE value="add test service user" />
     <MESSAGE value="add husky" />
-    <option name="LAST_COMMIT_MESSAGE" value="add husky" />
+    <MESSAGE value="add graphql" />
+    <option name="LAST_COMMIT_MESSAGE" value="add graphql" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
@@ -285,7 +275,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/internal/core/services/user.service/service_test.go</url>
-          <line>105</line>
+          <line>104</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">

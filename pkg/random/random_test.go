@@ -6,32 +6,32 @@ import (
 )
 
 func TestRandomInt(t *testing.T) {
-	num := RandomInt(1, 2)
+	num := Int(1, 2)
 	require.NotEmpty(t, num)
 }
 
 func TestRandomString(t *testing.T) {
-	str := RandomString(6)
+	str := String(6)
 	require.NotEmpty(t, str)
 }
 
 func TestRandomOwner(t *testing.T) {
-	owner := RandomOwner()
+	owner := Owner()
 	require.NotEmpty(t, owner)
 }
 
 func TestRandomMoney(t *testing.T) {
-	num := RandomMoney()
+	num := Money()
 	require.NotEmpty(t, num)
 }
 
 func TestRandomCurrency(t *testing.T) {
-	currency := RandomCurrency()
+	currency := Currency()
 	require.NotEmpty(t, currency)
 }
 
 func TestRandomEmail(t *testing.T) {
-	email := RandomEmail()
+	email := Email()
 	require.NotEmpty(t, email)
 	require.Contains(t, email, "@")
 }
