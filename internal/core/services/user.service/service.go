@@ -38,7 +38,7 @@ func (srv *service) CreateUser(
 	}
 
 	userDomain := domain.NewUser(
-		srv.uidGen.New(),
+		srv.uidGen.New().String(),
 		username,
 		hashedPassword,
 		fullName,

@@ -1,12 +1,11 @@
 package domain
 
 import (
-	"github.com/google/uuid"
 	"time"
 )
 
 type User struct {
-	ID                uuid.UUID `json:"id"`
+	ID                string    `json:"id"`
 	Username          string    `json:"username"`
 	HashedPassword    string    `json:"hashed_password"`
 	FullName          string    `json:"full_name"`
@@ -15,7 +14,7 @@ type User struct {
 	CreatedAt         time.Time `json:"created_at"`
 }
 
-func NewUser(id uuid.UUID, username, hashedPassword, fullName, email string) *User {
+func NewUser(id, username, hashedPassword, fullName, email string) *User {
 	return &User{
 		ID:             id,
 		Username:       username,

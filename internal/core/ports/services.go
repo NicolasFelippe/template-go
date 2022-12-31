@@ -13,3 +13,11 @@ type UserService interface {
 	) (*domain.User, error)
 	ListUsers(limit, offset *int) ([]*domain.User, error)
 }
+
+type AuthService interface {
+	Authenticate(
+		username,
+		password string,
+	) (*domain.User, error)
+	ListUsers(limit, offset *int) ([]*domain.User, error)
+}

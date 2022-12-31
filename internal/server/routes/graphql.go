@@ -22,7 +22,7 @@ func InitGraphQlRoutes(route *gin.Engine, store db.Store) {
 func graphqlHandler(store *db.Store) gin.HandlerFunc {
 	// NewExecutableSchema and Config are in the generated.go file
 	// Resolver is in the resolver.go file
-	repository := user.New(*store)
+	repository := user.New(*store, uidgen.New())
 	service := user_service.New(repository, uidgen.New(), crypto.New())
 
 	h := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{UserService: service}}))

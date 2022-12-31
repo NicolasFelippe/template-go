@@ -11,7 +11,7 @@ import (
 )
 
 func InitUserRoutes(route *gin.Engine, store db.Store) {
-	repository := user.New(store)
+	repository := user.New(store, uidgen.New())
 	service := user_service.New(repository, uidgen.New(), crypto.New())
 	handler := users_handler.NewUserHTTPHandler(service)
 

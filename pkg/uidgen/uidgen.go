@@ -8,7 +8,7 @@ const (
 
 type UIDGen interface {
 	New() uuid.UUID
-	IsValidUuid(str string) bool
+	IsValidUuid(str string) (*uuid.UUID, bool)
 }
 
 type uidgen struct{}
@@ -21,10 +21,10 @@ func (u uidgen) New() uuid.UUID {
 	return uuid.New()
 }
 
-func (u uidgen) IsValidUuid(str string) bool {
+func (u uidgen) IsValidUuid(str string) (*uuid.UUID, bool) {
 	if str == invalidUuid {
-		return false
+		return nil, false
 	}
-	_, err := uuid.Parse(str)
-	return err == nil
+	uuidValid, err := uuid.Parse(str)
+	return &uuidValid, err == nil
 }

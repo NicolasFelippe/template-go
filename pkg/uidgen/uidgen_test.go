@@ -14,13 +14,15 @@ func init() {
 func TestUuidValid(t *testing.T) {
 	id := uid.New()
 	require.NotEmpty(t, id)
-	isValid := uid.IsValidUuid(id.String())
+	uuid, isValid := uid.IsValidUuid(id.String())
 	require.True(t, isValid)
+	require.NotEmpty(t, uuid)
 }
 
 func TestUuidInvalid(t *testing.T) {
 	id := "00000000-0000-0000-0000-000000000000"
 	require.NotEmpty(t, id)
-	isValid := uid.IsValidUuid(id)
+	uuid, isValid := uid.IsValidUuid(id)
 	require.False(t, isValid)
+	require.Empty(t, uuid)
 }

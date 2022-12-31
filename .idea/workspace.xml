@@ -5,10 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add graphql">
+      <change afterPath="$PROJECT_DIR$/internal/core/domain/session.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/sqlc/query/session.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/http/internal/project.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/http/internal/project.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/server/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/server/user.http_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/user.http_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/domain/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/domain/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/ports/repositories.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/ports/repositories.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/ports/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/ports/services.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/services/user.service/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/user.service/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/graph/schema.resolvers.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/graph/schema.resolvers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/handlers/users.handler/user.dto.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/users.handler/user.dto.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/user/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/user/repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/server/routes/graphql.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/routes/graphql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/server/routes/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/routes/users.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/sqlc/repositories/models.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/repositories/models.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/sqlc/repositories/querier.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/repositories/querier.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/uidgen/uidgen.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/uidgen/uidgen.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,34 +60,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
-      &quot;PostgreSQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
+      "PostgreSQL"
+    ],
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/Change SQL Dialect": [
+      "PostgreSQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\pkg\token\paseto" />
@@ -85,7 +100,7 @@
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\handlers\users.handler" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.go test template-go/pkg/makertoken/jwt">
+  <component name="RunManager" selected="Go Build.go build template-go/cmd/http">
     <configuration name="go build template-go/cmd/http" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="template-go" />
       <working_directory value="$PROJECT_DIR$" />
@@ -142,10 +157,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build template-go/cmd/http" />
         <item itemvalue="Go Test.go test template-go/pkg/makertoken/jwt" />
         <item itemvalue="Go Test.go test template-go/pkg/makertoken/paseto" />
         <item itemvalue="Go Test.go test template-go/internal/core/services/user.service (1)" />
-        <item itemvalue="Go Build.go build template-go/cmd/http" />
         <item itemvalue="Go Test.TestPasswordError in template-go/pkg/crypto" />
       </list>
     </recent_temporary>
@@ -169,7 +184,7 @@
       <workItem from="1672435200417" duration="9891000" />
       <workItem from="1672452461921" duration="2790000" />
       <workItem from="1672455626768" duration="5088000" />
-      <workItem from="1672486247163" duration="3838000" />
+      <workItem from="1672486247163" duration="5815000" />
     </task>
     <task id="LOCAL-00001" summary="init project hexagonal">
       <created>1672265107376</created>

@@ -19,7 +19,7 @@ func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) 
 	userModel := &model.User{
 		Username: user.Username,
 		FullName: user.FullName,
-		ID:       user.ID.String(),
+		ID:       user.ID,
 		Email:    user.Email,
 	}
 	return userModel, nil
@@ -35,7 +35,7 @@ func (r *queryResolver) Users(ctx context.Context, pageID int, pageSize int) ([]
 	var users []*model.User
 	for _, user := range result {
 		users = append(users, &model.User{
-			ID:       user.ID.String(),
+			ID:       user.ID,
 			FullName: user.FullName,
 			Username: user.Username,
 			Email:    user.Email,

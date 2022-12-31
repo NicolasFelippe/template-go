@@ -2,31 +2,40 @@ package user
 
 import (
 	"context"
+	"errors"
 	"template-go/internal/core/domain"
 	db "template-go/internal/sqlc/repositories"
+	"template-go/pkg/uidgen"
 )
 
 type UserRepository struct {
-	store db.Store
+	store  db.Store
+	uidGen uidgen.UIDGen
 }
 
-func New(store db.Store) *UserRepository {
+func New(store db.Store, uidGen uidgen.UIDGen) *UserRepository {
 	return &UserRepository{
-		store: store,
+		store:  store,
+		uidGen: uidGen,
 	}
 }
 
-func (userConfig UserRepository) CreateUser(user *domain.User) (*domain.User, error) {
+func (userRepository UserRepository) CreateUser(user *domain.User) (*domain.User, error) {
+
+	uuid, isValid := userRepository.uidGen.IsValidUuid(user.ID)
+	if !isValid {
+		return nil, errors.New("UUID invalid")
+	}
 
 	createUserParams := db.CreateUserParams{
-		ID:             user.ID,
+		ID:             *uuid,
 		Username:       user.Username,
 		HashedPassword: user.HashedPassword,
 		FullName:       user.FullName,
 		Email:          user.Email,
 	}
 
-	_, err := userConfig.store.CreateUser(context.Background(), createUserParams)
+	_, err := userRepository.store.CreateUser(context.Background(), createUserParams)
 	if err != nil {
 		return nil, err
 	}
@@ -34,12 +43,12 @@ func (userConfig UserRepository) CreateUser(user *domain.User) (*domain.User, er
 	return user, nil
 }
 
-func (userConfig UserRepository) Users(limit, offset *int) ([]*domain.User, error) {
+func (userRepository UserRepository) Users(limit, offset *int) ([]*domain.User, error) {
 	var listUsersParams = db.ListUsersParams{
 		Limit:  int32(*limit),
 		Offset: int32(*offset),
 	}
-	result, err := userConfig.store.ListUsers(context.Background(), listUsersParams)
+	result, err := userRepository.store.ListUsers(context.Background(), listUsersParams)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +56,7 @@ func (userConfig UserRepository) Users(limit, offset *int) ([]*domain.User, erro
 	var users []*domain.User
 	for _, user := range result {
 		users = append(users, &domain.User{
-			ID:                user.ID,
+			ID:                user.ID.String(),
 			FullName:          user.FullName,
 			Username:          user.Username,
 			Email:             user.Email,

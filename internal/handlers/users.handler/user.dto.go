@@ -1,13 +1,12 @@
 package users_handler
 
 import (
-	"github.com/google/uuid"
 	"template-go/internal/core/domain"
 	"time"
 )
 
 type ResponseCreateUserDTO struct {
-	ID                uuid.UUID `json:"id"`
+	ID                string    `json:"id"`
 	Username          string    `json:"username"`
 	FullName          string    `json:"full_name"`
 	Email             string    `json:"email"`
