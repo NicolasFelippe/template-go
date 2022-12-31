@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add husky" />
+    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add husky">
+      <change afterPath="$PROJECT_DIR$/tools/gqlgen.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/crypto/crypto_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/crypto/crypto_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/random/random_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/random/random_test.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,11 +80,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\cmd\http" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\server" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\handlers\users.handler" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\handlers\usershandler" />
-      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\handlers" />
     </key>
   </component>
   <component name="RunManager" selected="Go Test.TestPasswordError in template-go/pkg/crypto">
@@ -165,7 +172,7 @@
       <workItem from="1672425898593" duration="73000" />
       <workItem from="1672426001848" duration="193000" />
       <workItem from="1672435200417" duration="9891000" />
-      <workItem from="1672452461921" duration="1177000" />
+      <workItem from="1672452461921" duration="1911000" />
     </task>
     <task id="LOCAL-00001" summary="init project hexagonal">
       <created>1672265107376</created>
