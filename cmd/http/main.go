@@ -5,7 +5,7 @@ import (
 	"fmt"
 	_ "github.com/golang/mock/mockgen/model"
 	"os"
-	project "template-go/cmd/app/internal"
+	project "template-go/cmd/http/internal"
 	log "template-go/internal/logger"
 )
 

@@ -4,23 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add test user http handler">
-      <change afterPath="$PROJECT_DIR$/internal/core/services/user.service/service_test.go" afterDir="false" />
+    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add test service user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/app/internal/project.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/app/internal/project.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/services/userservice/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/user.service/service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/handlers/usershandler/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/users.handler/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/handlers/usershandler/user.dto.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/users.handler/user.dto.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/postgres/connect.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/postgre/connect.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/repositories/userrepository/user.repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/user/repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/server/routes/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/routes/users.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/server/user.http_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/user.http_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/app/internal/flags.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/http/internal/flags.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/app/internal/project.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/http/internal/project.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/app/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/http/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="0" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -52,53 +48,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "go.import.settings.migrated": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
-      "PostgreSQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;PostgreSQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\cmd\http" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\server" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\handlers\users.handler" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\handlers\usershandler" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\handlers" />
-      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\pkg\uidgen" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.TestCreateUserError in template-go/internal/core/services/user.service">
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test in template-go/internal/core/services/user.service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.TestPasswordError in template-go/pkg/crypto">
+    <configuration name="TestCreateUserSuccess in template-go/internal/core/services/user.service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="template-go" />
       <working_directory value="$PROJECT_DIR$/internal/core/services/user.service" />
       <root_directory value="$PROJECT_DIR$" />
@@ -107,10 +95,22 @@
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTest\E$" />
+      <pattern value="^\QTestCreateUserSuccess\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestCreateUserError in template-go/internal/core/services/user.service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestPasswordError in template-go/pkg/crypto" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="template-go" />
+      <working_directory value="$PROJECT_DIR$/pkg/crypto" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="template-go/pkg/crypto" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestPasswordError\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test template-go/internal/core/services/user.service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="template-go" />
       <working_directory value="$PROJECT_DIR$/internal/core/services/user.service" />
       <root_directory value="$PROJECT_DIR$" />
@@ -119,47 +119,25 @@
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestCreateUserError\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestCreateUserHashedPasswordError in template-go/internal/core/services/user.service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="go test template-go/pkg/crypto" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$/internal/core/services/user.service" />
+      <working_directory value="$PROJECT_DIR$/pkg/crypto" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="template-go/internal/core/services/user.service" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTestCreateUserHashedPasswordError\E$" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
+      <package value="template-go/pkg/crypto" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <method v="2" />
     </configuration>
-    <configuration name="go test template-go/internal/handlers/users.handler" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="go test template-go/pkg/uidgen" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$/internal/handlers/users.handler" />
+      <working_directory value="$PROJECT_DIR$/pkg/uidgen" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="template-go/internal/handlers/users.handler" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go test template-go/internal/server (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$/internal/server" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="template-go/internal/server" />
+      <package value="template-go/pkg/uidgen" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
@@ -167,11 +145,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestCreateUserError in template-go/internal/core/services/user.service" />
-        <item itemvalue="Go Test.TestCreateUserHashedPasswordError in template-go/internal/core/services/user.service" />
-        <item itemvalue="Go Test.Test in template-go/internal/core/services/user.service" />
-        <item itemvalue="Go Test.go test template-go/internal/handlers/users.handler" />
-        <item itemvalue="Go Test.go test template-go/internal/server (1)" />
+        <item itemvalue="Go Test.TestPasswordError in template-go/pkg/crypto" />
+        <item itemvalue="Go Test.go test template-go/pkg/crypto" />
+        <item itemvalue="Go Test.go test template-go/internal/core/services/user.service" />
+        <item itemvalue="Go Test.TestCreateUserSuccess in template-go/internal/core/services/user.service" />
+        <item itemvalue="Go Test.go test template-go/pkg/uidgen" />
       </list>
     </recent_temporary>
   </component>
@@ -191,7 +169,8 @@
       <workItem from="1672425681253" duration="182000" />
       <workItem from="1672425898593" duration="73000" />
       <workItem from="1672426001848" duration="193000" />
-      <workItem from="1672435200417" duration="7974000" />
+      <workItem from="1672435200417" duration="9891000" />
+      <workItem from="1672452461921" duration="709000" />
     </task>
     <task id="LOCAL-00001" summary="init project hexagonal">
       <created>1672265107376</created>
@@ -242,7 +221,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672427074655</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="generate mock and tests">
+      <created>1672443843558</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1672443843558</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add test service user">
+      <created>1672445474671</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1672445474671</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +259,9 @@
     <MESSAGE value="add tests" />
     <MESSAGE value="change name" />
     <MESSAGE value="add test user http handler" />
-    <option name="LAST_COMMIT_MESSAGE" value="add test user http handler" />
+    <MESSAGE value="generate mock and tests" />
+    <MESSAGE value="add test service user" />
+    <option name="LAST_COMMIT_MESSAGE" value="add test service user" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
@@ -276,23 +271,27 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/internal/core/services/user.service/service_test.go</url>
-          <line>30</line>
+          <line>48</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/internal/core/services/user.service/service_test.go</url>
-          <line>71</line>
+          <line>77</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/internal/core/services/user.service/service_test.go</url>
-          <line>103</line>
+          <line>105</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/template_go$go_test_template_go_pkg_crypto.out" NAME="go test template-go/pkg/crypto Coverage Results" MODIFIED="1672445051112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/template_go$TestPasswordError_in_template_go_pkg_crypto.out" NAME="TestPasswordError in template-go/pkg/crypto Coverage Results" MODIFIED="1672444209447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/template_go$go_test_template_go_internal_server__1_.out" NAME="go test template-go/internal/server (1) Coverage Results" MODIFIED="1672426617325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/template_go$go_test_template_go_pkg_uidgen.out" NAME="go test template-go/pkg/uidgen Coverage Results" MODIFIED="1672443906428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/template_go$go_test_template_go_internal_core_services_user_service.out" NAME="go test template-go/internal/core/services/user.service Coverage Results" MODIFIED="1672443753395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
