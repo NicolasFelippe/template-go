@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add graphql">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/handlers/errors/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/errors/errors.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/server/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/server/middlewares/auth_middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/middlewares/auth_middleware.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/server/routes/graphql.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/routes/graphql.go" afterDir="false" />
-    </list>
+    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add graphql" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -175,7 +169,7 @@
       <workItem from="1672455626768" duration="5088000" />
       <workItem from="1672486247163" duration="8943000" />
       <workItem from="1672621940653" duration="6766000" />
-      <workItem from="1672652487747" duration="16325000" />
+      <workItem from="1672652487747" duration="16928000" />
     </task>
     <task id="LOCAL-00001" summary="init project hexagonal">
       <created>1672265107376</created>
@@ -280,11 +274,6 @@
           <url>file://$PROJECT_DIR$/internal/core/services/user/user.service_test.go</url>
           <line>104</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/graph/schema.resolvers.go</url>
-          <line>21</line>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/internal/handlers/authhandler/auth_http.go</url>
