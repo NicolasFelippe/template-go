@@ -10,12 +10,12 @@ import (
 	"template-go/pkg/uidgen"
 )
 
-func InitUserRoutes(route *gin.Engine, store db.Store) {
+func InitUserRoutes(publicRoute *gin.Engine, authRoute gin.IRoutes, store db.Store) {
 	repository := userrepo.New(store, uidgen.New())
 	service := userservice.New(repository, uidgen.New(), crypto.New())
 	handler := usershandler.NewUserHTTPHandler(service)
 
-	groupRoute := route.Group("/api/v1")
+	groupRoute := publicRoute.Group("/api/v1")
 	groupRoute.POST("/users", handler.CreateUser)
-	groupRoute.GET("/users", handler.ListUsers)
+	authRoute.GET("/users", handler.ListUsers)
 }

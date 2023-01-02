@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/o1egl/paseto"
 	"golang.org/x/crypto/chacha20poly1305"
+	domainErrors "template-go/internal/core/domain/errors"
 	"template-go/pkg/makertoken"
 	"time"
 )
@@ -28,12 +29,15 @@ func New(symmetricKey string) (makertoken.Maker, error) {
 func (maker *PasetoMaker) CreateToken(username string, duration time.Duration) (string, *makertoken.Payload, error) {
 	payload, err := makertoken.NewPayload(username, duration)
 	if err != nil {
-		return "", payload, err
+		appError := domainErrors.NewAppErrorWithType(domainErrors.UUIDGenError)
+		return "", payload, appError
 	}
 
 	tokenEncrypt, err := maker.paseto.Encrypt(maker.symmetricKey, payload, nil)
-
-	return tokenEncrypt, payload, err
+	if err != nil {
+		return tokenEncrypt, nil, domainErrors.NewAppErrorWithType(domainErrors.TokenGeneratorError)
+	}
+	return tokenEncrypt, payload, nil
 }
 
 func (maker *PasetoMaker) VerifyToken(tokenStr string) (*makertoken.Payload, error) {
@@ -41,11 +45,11 @@ func (maker *PasetoMaker) VerifyToken(tokenStr string) (*makertoken.Payload, err
 
 	err := maker.paseto.Decrypt(tokenStr, maker.symmetricKey, payload, nil)
 	if err != nil {
-		return nil, makertoken.ErrInvalidToken
+		return nil, domainErrors.NewAppError(err, domainErrors.NotAuthenticated)
 	}
 	err = payload.Valid()
 	if err != nil {
-		return nil, err
+		return nil, domainErrors.NewAppError(err, domainErrors.NotAuthenticated)
 	}
 
 	return payload, nil

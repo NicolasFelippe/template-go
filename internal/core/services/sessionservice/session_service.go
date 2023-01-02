@@ -2,20 +2,20 @@ package sessionservice
 
 import (
 	"template-go/internal/config"
-	"template-go/internal/core/domain"
-	"template-go/internal/core/ports"
+	"template-go/internal/core/domain/authentication"
+	"template-go/internal/core/domain/sessions"
 )
 
 type SessionService struct {
-	repository            ports.SessionRepository
+	repository            sessions.SessionRepository
 	config                config.Config
-	authenticationService ports.AuthenticationService
+	authenticationService authentication.AuthenticationService
 }
 
 func New(
-	repository ports.SessionRepository,
+	repository sessions.SessionRepository,
 	config config.Config,
-	authenticationService ports.AuthenticationService,
+	authenticationService authentication.AuthenticationService,
 ) *SessionService {
 	return &SessionService{
 		repository,
@@ -29,14 +29,14 @@ func (service *SessionService) CreateSession(
 	password,
 	userAgent,
 	clientIp string,
-) (*domain.Session, *domain.Authentication, error) {
+) (*sessions.Session, *authentication.Authentication, error) {
 
 	auth, err := service.authenticationService.Authenticate(username, password)
 	if err != nil {
 		return nil, nil, err
 	}
 
-	session := domain.NewSession(
+	session := sessions.NewSession(
 		auth.SessionID,
 		userAgent,
 		auth.RefreshToken,

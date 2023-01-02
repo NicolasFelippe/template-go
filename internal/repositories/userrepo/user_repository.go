@@ -2,8 +2,10 @@ package userrepo
 
 import (
 	"context"
-	"errors"
-	"template-go/internal/core/domain"
+	"github.com/lib/pq"
+	domainErrors "template-go/internal/core/domain/errors"
+	domain "template-go/internal/core/domain/users"
+	"template-go/internal/logger"
 	db "template-go/internal/sqlc/repositories"
 	"template-go/pkg/uidgen"
 )
@@ -22,64 +24,56 @@ func New(store db.Store, uidGen uidgen.UIDGen) *UserRepository {
 
 func (userRepository UserRepository) CreateUser(user *domain.User) (*domain.User, error) {
 
-	uuid, isValid := userRepository.uidGen.IsValidUuid(user.ID)
-	if !isValid {
-		return nil, errors.New("UUID invalid")
-	}
-
-	createUserParams := db.CreateUserParams{
-		ID:             *uuid,
-		Username:       user.Username,
-		HashedPassword: user.HashedPassword,
-		FullName:       user.FullName,
-		Email:          user.Email,
-	}
-
-	_, err := userRepository.store.CreateUser(context.Background(), createUserParams)
+	uuid, err := userRepository.uidGen.IsValidUuid(user.ID)
 	if err != nil {
 		return nil, err
 	}
 
-	return user, nil
+	createUserParams := toDBModel(user, uuid)
+
+	result, err := userRepository.store.CreateUser(context.Background(), *createUserParams)
+	if err != nil {
+		if pqErr, ok := err.(*pq.Error); ok {
+			switch pqErr.Code.Name() {
+			case "unique_violation":
+				appErr := domainErrors.NewAppError(pqErr, domainErrors.RepositoryError)
+				return nil, appErr
+			}
+		}
+		appErr := domainErrors.NewAppError(err, domainErrors.RepositoryError)
+		return nil, appErr
+	}
+	return toDomainModel(&result), nil
 }
 
-func (userRepository UserRepository) Users(limit, offset *int) ([]*domain.User, error) {
+func (userRepository UserRepository) ListUsersByPagination(limit, offset *int) ([]domain.User, error) {
 	var listUsersParams = db.ListUsersParams{
 		Limit:  int32(*limit),
 		Offset: int32(*offset),
 	}
 	result, err := userRepository.store.ListUsers(context.Background(), listUsersParams)
 	if err != nil {
-		return nil, err
+		appErr := domainErrors.NewAppError(err, domainErrors.RepositoryError)
+		return nil, appErr
 	}
 
-	var users []*domain.User
-	for _, user := range result {
-		users = append(users, &domain.User{
-			ID:                user.ID.String(),
-			FullName:          user.FullName,
-			Username:          user.Username,
-			Email:             user.Email,
-			PasswordChangedAt: user.PasswordChangedAt,
-			CreatedAt:         user.CreatedAt,
-		})
-	}
-	return users, nil
+	return listToDomainModel(result), nil
 }
 
 func (userRepository UserRepository) GetUserByUsername(username string) (*domain.User, error) {
 	result, err := userRepository.store.GetUser(context.Background(), username)
-	if err != nil {
-		return nil, err
+
+	if pqErr, ok := err.(*pq.Error); ok {
+		test := pqErr.Code.Name()
+		logger.Logger.Info(test)
+		//switch pqErr.Code.Name() {
+		//case "unique_violation":
+		//	appErr := domainErrors.NewAppError(pqErr, domainErrors.RepositoryError)
+		//	return nil, appErr
+		//}
+		appErr := domainErrors.NewAppErrorWithType(domainErrors.NotFound)
+		return nil, appErr
 	}
-	user := &domain.User{
-		ID:                result.ID.String(),
-		FullName:          result.FullName,
-		Username:          result.Username,
-		Email:             result.Email,
-		HashedPassword:    result.HashedPassword,
-		PasswordChangedAt: result.PasswordChangedAt,
-		CreatedAt:         result.CreatedAt,
-	}
-	return user, nil
+
+	return toDomainModel(&result), nil
 }

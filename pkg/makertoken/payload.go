@@ -7,6 +7,7 @@ import (
 )
 
 var (
+	ErrDecryptToken = errors.New("error operation decrypt token")
 	ErrInvalidToken = errors.New("token is invalid")
 	ErrExpiredToken = errors.New("token has expired")
 )

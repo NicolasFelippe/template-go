@@ -73,7 +73,7 @@ func (q *Queries) GetUser(ctx context.Context, username string) (User, error) {
 	return i, err
 }
 
-const listUsers = `-- name: ListUsers :many
+const listUsers = `-- name: ListUsersByPagination :many
 SELECT id, username, hashed_password, full_name, email, password_changed_at, created_at
 FROM users
 ORDER BY full_name

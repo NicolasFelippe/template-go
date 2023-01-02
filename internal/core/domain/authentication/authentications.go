@@ -1,18 +1,21 @@
-package domain
+package authentication
 
-import "time"
+import (
+	"template-go/internal/core/domain/users"
+	"time"
+)
 
 type Authentication struct {
-	SessionID             string    `json:"session_id"`
-	User                  User      `json:"user"`
-	AccessToken           string    `json:"access_token"`
-	RefreshToken          string    `json:"refresh_token"`
-	AccessTokenExpiresAt  time.Time `json:"access_token_expires_at"`
-	RefreshTokenExpiresAt time.Time `json:"refresh_token_expires_at"`
+	SessionID             string
+	User                  users.User
+	AccessToken           string
+	RefreshToken          string
+	AccessTokenExpiresAt  time.Time
+	RefreshTokenExpiresAt time.Time
 }
 
 func NewAuthentication(
-	user User,
+	user users.User,
 	accessToken,
 	refreshToken,
 	sessionId string,

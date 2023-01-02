@@ -35,11 +35,11 @@ func (m *MockUIDGen) EXPECT() *MockUIDGenMockRecorder {
 }
 
 // IsValidUuid mocks base method.
-func (m *MockUIDGen) IsValidUuid(arg0 string) (*uuid.UUID, bool) {
+func (m *MockUIDGen) IsValidUuid(arg0 string) (*uuid.UUID, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "IsValidUuid", arg0)
 	ret0, _ := ret[0].(*uuid.UUID)
-	ret1, _ := ret[1].(bool)
+	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 

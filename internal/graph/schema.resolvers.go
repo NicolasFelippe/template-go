@@ -7,12 +7,19 @@ package graph
 import (
 	"context"
 	"fmt"
+	"template-go/internal/core/domain/users"
 	"template-go/internal/graph/model"
 )
 
 // CreateUser is the resolver for the createUser field.
 func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) (*model.User, error) {
-	user, err := r.UserService.CreateUser(input.Username, input.Password, input.FullName, input.Email)
+	userDomain := &users.User{
+		Username:       input.Username,
+		HashedPassword: input.Password,
+		FullName:       input.FullName,
+		Email:          input.Email,
+	}
+	user, err := r.UserService.CreateUser(userDomain)
 	if err != nil {
 		return nil, fmt.Errorf("error inserting new userservice: %v", err)
 	}
@@ -28,7 +35,7 @@ func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) 
 // Users is the resolver for the users field.
 func (r *queryResolver) Users(ctx context.Context, pageID int, pageSize int) ([]*model.User, error) {
 	offset := (pageID - 1) * pageSize
-	result, err := r.UserService.ListUsers(&pageSize, &offset)
+	result, err := r.UserService.ListUsersByPagination(&pageSize, &offset)
 	if err != nil {
 		return nil, err
 	}

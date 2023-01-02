@@ -2,8 +2,8 @@ package authenticationservice
 
 import (
 	"template-go/internal/config"
-	"template-go/internal/core/domain"
-	"template-go/internal/core/ports"
+	"template-go/internal/core/domain/authentication"
+	"template-go/internal/core/domain/users"
 	"template-go/pkg/crypto"
 	"template-go/pkg/makertoken"
 	"template-go/pkg/uidgen"
@@ -13,7 +13,7 @@ type AuthenticationService struct {
 	makerToken  makertoken.Maker
 	uidGen      uidgen.UIDGen
 	crypto      crypto.Crypto
-	userService ports.UserService
+	userService users.UserService
 	config      config.Config
 }
 
@@ -22,7 +22,7 @@ func New(
 	uidGen uidgen.UIDGen,
 	crypto crypto.Crypto,
 	config config.Config,
-	userService ports.UserService,
+	userService users.UserService,
 ) *AuthenticationService {
 	return &AuthenticationService{
 		makerToken,
@@ -36,7 +36,7 @@ func New(
 func (service *AuthenticationService) Authenticate(
 	username,
 	password string,
-) (*domain.Authentication, error) {
+) (*authentication.Authentication, error) {
 
 	user, err := service.userService.GetUserByUsername(username)
 	if err != nil {
@@ -49,12 +49,19 @@ func (service *AuthenticationService) Authenticate(
 	}
 
 	accessToken, accessPayload, err := service.makerToken.CreateToken(user.Username, service.config.AccessTokenDuration)
+	if err != nil {
+		return nil, err
+	}
 
 	refreshToken, refreshPayload, err := service.makerToken.CreateToken(
 		user.Username,
 		service.config.RefreshTokenDuration,
 	)
-	newAuth := domain.NewAuthentication(
+	if err != nil {
+		return nil, err
+	}
+
+	newAuth := authentication.NewAuthentication(
 		*user,
 		accessToken,
 		refreshToken,

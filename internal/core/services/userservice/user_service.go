@@ -1,20 +1,19 @@
 package userservice
 
 import (
-	"template-go/internal/core/domain"
-	"template-go/internal/core/ports"
+	"template-go/internal/core/domain/users"
 	"template-go/pkg/crypto"
 	"template-go/pkg/uidgen"
 )
 
 type UserService struct {
-	userRepository ports.UserRepository
+	userRepository users.UserRepository
 	uidGen         uidgen.UIDGen
 	crypto         crypto.Crypto
 }
 
 func New(
-	userRepository ports.UserRepository,
+	userRepository users.UserRepository,
 	uidGen uidgen.UIDGen,
 	crypto crypto.Crypto,
 ) *UserService {
@@ -26,26 +25,17 @@ func New(
 }
 
 func (srv *UserService) CreateUser(
-	username string,
-	password string,
-	fullName string,
-	email string,
-) (*domain.User, error) {
+	user *users.User,
+) (*users.User, error) {
 
-	hashedPassword, err := srv.crypto.HashPassword(password)
+	hashedPassword, err := srv.crypto.HashPassword(user.HashedPassword)
 	if err != nil {
 		return nil, err
 	}
+	user.HashedPassword = hashedPassword
+	user.ID = srv.uidGen.New().String()
 
-	userDomain := domain.NewUser(
-		srv.uidGen.New().String(),
-		username,
-		hashedPassword,
-		fullName,
-		email,
-	)
-
-	result, err := srv.userRepository.CreateUser(userDomain)
+	result, err := srv.userRepository.CreateUser(user)
 
 	if err != nil {
 		return nil, err
@@ -54,10 +44,10 @@ func (srv *UserService) CreateUser(
 	return result, nil
 }
 
-func (srv *UserService) ListUsers(limit, offset *int) ([]*domain.User, error) {
-	return srv.userRepository.Users(limit, offset)
+func (srv *UserService) ListUsersByPagination(limit, offset *int) ([]users.User, error) {
+	return srv.userRepository.ListUsersByPagination(limit, offset)
 }
 
-func (srv *UserService) GetUserByUsername(username string) (*domain.User, error) {
+func (srv *UserService) GetUserByUsername(username string) (*users.User, error) {
 	return srv.userRepository.GetUserByUsername(username)
 }

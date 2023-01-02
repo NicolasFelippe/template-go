@@ -25,8 +25,8 @@ func createRandomUser(t *testing.T) User {
 	require.NoError(t, err)
 
 	uid := uidge.New()
-	_, valid := uidge.IsValidUuid(uid.String())
-	require.True(t, valid)
+	_, err = uidge.IsValidUuid(uid.String())
+	require.NoError(t, err)
 
 	arg := CreateUserParams{
 		ID:             uid,

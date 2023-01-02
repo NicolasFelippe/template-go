@@ -2,8 +2,7 @@ package sessionrepo
 
 import (
 	"context"
-	"errors"
-	"template-go/internal/core/domain"
+	"template-go/internal/core/domain/sessions"
 	db "template-go/internal/sqlc/repositories"
 	"template-go/pkg/uidgen"
 )
@@ -20,16 +19,16 @@ func New(store db.Store, uidGen uidgen.UIDGen) *SessionRepository {
 	}
 }
 
-func (repository *SessionRepository) CreateSession(session *domain.Session) (*domain.Session, error) {
+func (repository *SessionRepository) CreateSession(session *sessions.Session) (*sessions.Session, error) {
 
-	uuid, isValid := repository.uidGen.IsValidUuid(session.ID)
-	if !isValid {
-		return nil, errors.New("UUID invalid")
+	uuid, err := repository.uidGen.IsValidUuid(session.ID)
+	if err != nil {
+		return nil, err
 	}
 
-	uid, isValid := repository.uidGen.IsValidUuid(session.UserID)
-	if !isValid {
-		return nil, errors.New("UUID invalid")
+	uid, err := repository.uidGen.IsValidUuid(session.UserID)
+	if err != nil {
+		return nil, err
 	}
 
 	arg := db.CreateSessionParams{
@@ -45,7 +44,7 @@ func (repository *SessionRepository) CreateSession(session *domain.Session) (*do
 	if err != nil {
 		return nil, err
 	}
-	rsp := domain.NewSession(
+	rsp := sessions.NewSession(
 		createSession.ID.String(),
 		createSession.UserAgent,
 		createSession.RefreshToken,

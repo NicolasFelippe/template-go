@@ -33,7 +33,7 @@ createdb:
 
 mock:
 	mockgen -package mockdb  -destination=./mocks/sqlc/mock.store.go template-go/internal/sqlc/repositories Store
-	mockgen -package userrepositorymock  -destination=./mocks/repositories/mock.userrepository.go template-go/internal/core/ports UserRepository
+	mockgen -package userrepositorymock  -destination=./mocks/repositories/mock.userrepository.go template-go/internal/core/domain/users UserRepository
 	mockgen -package cryptomock  -destination=./mocks/pkg/crypto/mock.crypto.go template-go/pkg/crypto Crypto
 	mockgen -package uidgenmock  -destination=./mocks/pkg/uidgen/mock.uidgen.go template-go/pkg/uidgen UIDGen
 

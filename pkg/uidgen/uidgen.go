@@ -1,14 +1,19 @@
 package uidgen
 
-import "github.com/google/uuid"
+import (
+	"github.com/google/uuid"
+	"github.com/pkg/errors"
+	domainErrors "template-go/internal/core/domain/errors"
+)
 
 const (
-	invalidUuid = "00000000-0000-0000-0000-000000000000"
+	invalidUuid    = "00000000-0000-0000-0000-000000000000"
+	invalidMessage = "uuid invalid '000000...'"
 )
 
 type UIDGen interface {
 	New() uuid.UUID
-	IsValidUuid(str string) (*uuid.UUID, bool)
+	IsValidUuid(str string) (*uuid.UUID, error)
 }
 
 type uidgen struct{}
@@ -21,10 +26,14 @@ func (u uidgen) New() uuid.UUID {
 	return uuid.New()
 }
 
-func (u uidgen) IsValidUuid(str string) (*uuid.UUID, bool) {
+func (u uidgen) IsValidUuid(str string) (*uuid.UUID, error) {
 	if str == invalidUuid {
-		return nil, false
+		return nil, domainErrors.NewAppError(errors.New(invalidMessage), domainErrors.UUIDGenError)
 	}
 	uuidValid, err := uuid.Parse(str)
-	return &uuidValid, err == nil
+	if err != nil {
+		appErr := domainErrors.NewAppError(err, domainErrors.UUIDGenError)
+		return nil, appErr
+	}
+	return &uuidValid, nil
 }

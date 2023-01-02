@@ -2,74 +2,64 @@ package usershandler
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/lib/pq"
 	"net/http"
-	"template-go/internal/core/ports"
-	"template-go/internal/handlers/helpers"
+	domainErrors "template-go/internal/core/domain/errors"
+	"template-go/internal/core/domain/users"
 )
 
 type UserHTTPHandler struct {
-	userService ports.UserService
+	userService users.UserService
 }
 
-func NewUserHTTPHandler(userService ports.UserService) *UserHTTPHandler {
+func NewUserHTTPHandler(userService users.UserService) *UserHTTPHandler {
 	return &UserHTTPHandler{
 		userService,
 	}
 }
 
 func (hdl *UserHTTPHandler) CreateUser(ctx *gin.Context) {
-	var req requestUserDTO
-	if err := ctx.ShouldBindJSON(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, helpers.ErrorResponse(err))
+	user, err := BindJson(ctx)
+	if err != nil {
+		appError := domainErrors.NewAppError(err, domainErrors.ValidationError)
+		_ = ctx.Error(appError)
 		return
 	}
-
-	result, err := hdl.userService.CreateUser(
-		req.Username,
-		req.Password,
-		req.FullName,
-		req.Email,
-	)
+	result, err := hdl.userService.CreateUser(user)
 
 	if err != nil {
-		if pqErr, ok := err.(*pq.Error); ok {
-			switch pqErr.Code.Name() {
-			case "unique_violation":
-				ctx.JSON(http.StatusForbidden, helpers.ErrorResponse(err))
-				return
-			}
-		}
-		ctx.JSON(http.StatusInternalServerError, helpers.ErrorResponse(err))
+		_ = ctx.Error(err)
 		return
 	}
 
-	var rsp ResponseCreateUserDTO
-	rsp.FromDomain(result)
-
-	ctx.JSON(http.StatusOK, rsp)
+	ctx.JSON(http.StatusCreated, *toResponseModel(result))
 }
 
 func (hdl *UserHTTPHandler) ListUsers(ctx *gin.Context) {
-	var req listUsersRequest
+	var req PageValidator
 	if err := ctx.ShouldBindQuery(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, helpers.ErrorResponse(err))
+		appError := domainErrors.NewAppError(err, domainErrors.ValidationError)
+		_ = ctx.Error(appError)
 		return
 	}
 
+	//authPayload := ctx.MustGet(middlewares.AuthorizationPayloadKey).(*makertoken.Payload)
+	//logger.Logger.Info(authPayload.Username)
 	offset := (req.PageID - 1) * req.PageSize
-	result, err := hdl.userService.ListUsers(
+	results, err := hdl.userService.ListUsersByPagination(
 		&req.PageSize,
 		&offset,
 	)
 
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, helpers.ErrorResponse(err))
+		_ = ctx.Error(err)
 		return
 	}
 
-	//var rsp ResponseCreateUserDTO
-	//rsp.FromDomain(result)
+	var responseItems = make([]UserResponse, len(results))
 
-	ctx.JSON(http.StatusOK, result)
+	for i, element := range results {
+		responseItems[i] = *toResponseModel(&element)
+	}
+	//TODO: adicionar atributos ao response referente a paginação caso necessario.
+	ctx.JSON(http.StatusOK, responseItems)
 }

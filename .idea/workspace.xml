@@ -5,37 +5,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add graphql">
-      <change afterPath="$PROJECT_DIR$/internal/core/domain/authentication.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/core/services/authenticationservice/authentication_service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/core/services/sessionservice/session_service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/handlers/authhandler/auth_http.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/handlers/authhandler/login_request_dto.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/handlers/helpers/error_response.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repositories/sessionrepo/session.repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/server/routes/authenticate.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/core/domain/authentication/service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/core/domain/errors/errors.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/core/domain/sessions/repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/core/domain/sessions/service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/core/domain/sessions/sessions.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/core/domain/users/repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/core/domain/users/service.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/handlers/authhandler/mapper.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/handlers/authhandler/reponses.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/handlers/authhandler/validator.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/handlers/errors/errors.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/handlers/usershandler/mapper.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/handlers/usershandler/responses.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/handlers/usershandler/validator.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/repositories/userrepo/mapper.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/server/middlewares/auth_middleware.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/domain/session.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/domain/session.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/ports/repositories.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/ports/repositories.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/ports/services.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/ports/services.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/services/user.service/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/userservice/user_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/services/user.service/service_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/userservice/user_service_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/domain/authentication.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/domain/authentication/authentications.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/domain/session.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/domain/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/domain/users/users.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/ports/repositories.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/ports/services.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/services/authenticationservice/authentication_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/authenticationservice/authentication_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/services/sessionservice/session_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/sessionservice/session_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/services/userservice/user_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/userservice/user_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/services/userservice/user_service_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/userservice/user_service_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/graph/resolver.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/graph/resolver.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/graph/schema.resolvers.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/graph/schema.resolvers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/handlers/users.handler/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/usershandler/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/handlers/users.handler/user.dto.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/usershandler/user_dto.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/repositories/user/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/userrepo/user_repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/handlers/authhandler/auth_http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/authhandler/auth_http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/handlers/authhandler/login_request_dto.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/handlers/helpers/error_response.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/handlers/usershandler/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/usershandler/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/handlers/usershandler/user_dto.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/usershandler/user_dto.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/sessionrepo/session.repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/sessionrepo/session_repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repositories/userrepo/user_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/userrepo/user_repository.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/server/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/server/routes/graphql.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/routes/graphql.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/server/routes/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/routes/users.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/server/user.http_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/user_http_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/sqlc/repositories/session.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/repositories/session.sql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/server/user_http_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/user_http_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/sqlc/repositories/user.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/repositories/user.sql.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/makertoken/jwt/jwt.maker.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/makertoken/jwt/jwt_maker.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/makertoken/jwt/jwt.maker_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/makertoken/jwt/jwt_maker_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/makertoken/paseto/paseto.maker.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/makertoken/paseto/paseto_maker.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/makertoken/paseto/paseto.maker_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/makertoken/paseto/paseto_maker_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/sqlc/repositories/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/repositories/user_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocks/pkg/uidgen/mock.uidgen.go" beforeDir="false" afterPath="$PROJECT_DIR$/mocks/pkg/uidgen/mock.uidgen.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mocks/repositories/mock.userrepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/mocks/repositories/mock.userrepository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/crypto/crypto.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/crypto/crypto.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/makertoken/paseto/paseto_maker.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/makertoken/paseto/paseto_maker.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/makertoken/payload.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/makertoken/payload.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/uidgen/uidgen.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/uidgen/uidgen.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/uidgen/uidgen_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/uidgen/uidgen_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,23 +127,15 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\core\domain\sessions" />
+      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\core\domain\authentication" />
+      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\core\domain\users" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\core\services\session" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\pkg\token\paseto" />
-      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal" />
-      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\cmd\http" />
-      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\server" />
     </key>
   </component>
   <component name="RunManager" selected="Go Build.go build template-go/cmd/http">
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build template-go/cmd/http" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build template-go/cmd/http" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="template-go" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
@@ -133,55 +144,47 @@
       <filePath value="$PROJECT_DIR$/cmd/http/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="TestPasswordError in template-go/pkg/crypto" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestCreateUserAPI in template-go/internal/server" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$/pkg/crypto" />
+      <working_directory value="$PROJECT_DIR$/internal/server" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="template-go/pkg/crypto" />
+      <package value="template-go/internal/server" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
-      <pattern value="^\QTestPasswordError\E$" />
+      <pattern value="^\QTestCreateUserAPI\E$" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+    <configuration name="Test_Should_CreateUser_When_SendParameters_Then_Success in template-go/internal/core/services/userservice" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
+      <working_directory value="$PROJECT_DIR$/internal/core/services/userservice" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="template-go/internal/core/services/userservice" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
+      <pattern value="^\QTest_Should_CreateUser_When_SendParameters_Then_Success\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="go test template-go/internal/core/services/user.service (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="go test template-go/internal/core/services/userservice" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$/internal/core/services/user.service" />
+      <working_directory value="$PROJECT_DIR$/internal/core/services/userservice" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="template-go/internal/core/services/user.service" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go test template-go/pkg/makertoken/jwt" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$/pkg/makertoken/jwt" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="template-go/pkg/makertoken/jwt" />
+      <package value="template-go/internal/core/services/userservice" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <method v="2" />
     </configuration>
-    <configuration name="go test template-go/pkg/makertoken/paseto" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="go test template-go/internal/server" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="template-go" />
-      <working_directory value="$PROJECT_DIR$/pkg/makertoken/paseto" />
+      <working_directory value="$PROJECT_DIR$/internal/server" />
       <root_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <package value="template-go/pkg/makertoken/paseto" />
+      <package value="template-go/internal/server" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
@@ -189,11 +192,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build template-go/cmd/http" />
-        <item itemvalue="Go Test.go test template-go/pkg/makertoken/jwt" />
-        <item itemvalue="Go Test.go test template-go/pkg/makertoken/paseto" />
-        <item itemvalue="Go Test.go test template-go/internal/core/services/user.service (1)" />
-        <item itemvalue="Go Test.TestPasswordError in template-go/pkg/crypto" />
+        <item itemvalue="Go Test.go test template-go/internal/core/services/userservice" />
+        <item itemvalue="Go Test.Test_Should_CreateUser_When_SendParameters_Then_Success in template-go/internal/core/services/userservice" />
+        <item itemvalue="Go Test.go test template-go/internal/server" />
+        <item itemvalue="Go Test.TestCreateUserAPI in template-go/internal/server" />
       </list>
     </recent_temporary>
   </component>
@@ -217,7 +219,8 @@
       <workItem from="1672452461921" duration="2790000" />
       <workItem from="1672455626768" duration="5088000" />
       <workItem from="1672486247163" duration="8943000" />
-      <workItem from="1672621940653" duration="6461000" />
+      <workItem from="1672621940653" duration="6766000" />
+      <workItem from="1672652487747" duration="14497000" />
     </task>
     <task id="LOCAL-00001" summary="init project hexagonal">
       <created>1672265107376</created>
@@ -325,21 +328,56 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/internal/graph/schema.resolvers.go</url>
-          <line>14</line>
+          <line>21</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/internal/handlers/authhandler/auth_http.go</url>
-          <line>21</line>
+          <line>20</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/core/services/authenticationservice/authentication_service.go</url>
-          <line>56</line>
+          <url>file://$PROJECT_DIR$/internal/repositories/userrepo/user_repository.go</url>
+          <line>65</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/repositories/userrepo/user_repository.go</url>
+          <line>66</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/core/services/userservice/user_service_test.go</url>
+          <line>35</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/handlers/errors/errors.go</url>
+          <line>52</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/server/middlewares/auth_middleware.go</url>
+          <line>20</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/handlers/usershandler/http.go</url>
+          <line>20</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/handlers/errors/errors.go</url>
+          <line>15</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GoApplicationRunConfiguration">
+        <watch expression="strings.ToLower(appError.Type)" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/template_go$go_test_template_go_pkg_crypto.out" NAME="go test template-go/pkg/crypto Coverage Results" MODIFIED="1672445051112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

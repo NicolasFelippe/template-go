@@ -3,6 +3,8 @@ package server
 import (
 	"github.com/gin-gonic/gin"
 	"template-go/internal/config"
+	errorsHandlers "template-go/internal/handlers/errors"
+	"template-go/internal/server/middlewares"
 	"template-go/internal/server/routes"
 	db "template-go/internal/sqlc/repositories"
 	"template-go/pkg/makertoken"
@@ -32,9 +34,13 @@ func (srv *Server) Start() error {
 }
 
 func SetupRouter(store db.Store, tokenMaker makertoken.Maker, config config.Config) *gin.Engine {
-	router := gin.Default()
-	routes.InitUserRoutes(router, store)
-	routes.InitGraphQlRoutes(router, store)
-	routes.InitAuthRoutes(router, store, tokenMaker, config)
-	return router
+	routerDefault := gin.Default()
+
+	routerDefault.Use(errorsHandlers.Handler)
+	authRoutes := routerDefault.Group("/api/v1").Use(middlewares.AuthMiddleware(tokenMaker))
+
+	routes.InitUserRoutes(routerDefault, authRoutes, store)
+	//routes.InitGraphQlRoutes(router, authRoutes, store)
+	//routes.InitAuthRoutes(router, authRoutes, store, tokenMaker, config)
+	return routerDefault
 }

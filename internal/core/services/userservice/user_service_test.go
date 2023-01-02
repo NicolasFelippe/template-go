@@ -6,7 +6,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/lib/pq"
 	"github.com/stretchr/testify/require"
-	"template-go/internal/core/domain"
+	"template-go/internal/core/domain/users"
 	cryptomock "template-go/mocks/pkg/crypto"
 	uidgenmock "template-go/mocks/pkg/uidgen"
 	userrepositorymock "template-go/mocks/repositories"
@@ -31,14 +31,13 @@ func setup(t *testing.T) func() {
 	}
 }
 
-func randomUser(t *testing.T, crypt *cryptomock.MockCrypto) (user *domain.User, password string) {
-	password = random.String(6)
-	hashedPassword, err := crypt.HashPassword(password)
-	require.NoError(t, err)
+func randomUser(crypt *cryptomock.MockCrypto) (user *users.User, hashedPassword string, err error) {
+	password := random.String(6)
+	hashedPassword, err = crypt.HashPassword(password)
 
-	user = &domain.User{
+	user = &users.User{
 		Username:       random.Owner(),
-		HashedPassword: hashedPassword,
+		HashedPassword: password,
 		FullName:       random.Owner(),
 		Email:          random.Email(),
 	}
@@ -51,16 +50,20 @@ func Test_Should_CreateUser_When_SendParameters_Then_Success(t *testing.T) {
 
 	mockCrypto.EXPECT().HashPassword(gomock.Any()).Return("@hashedPassword", nil).AnyTimes()
 	mockUidGen.EXPECT().New().Return(uuid.UUID{})
-	user, password := randomUser(t, mockCrypto)
+
+	user, hashedPassword, err := randomUser(mockCrypto)
+	require.NoError(t, err)
+
 	mockRepository.EXPECT().CreateUser(gomock.Any()).Return(user, nil).Times(1)
-	createUser, err := userService.CreateUser(user.Username, password, user.FullName, user.Email)
+
+	createUser, err := userService.CreateUser(user)
 
 	require.NoError(t, err)
 	require.NotEmpty(t, createUser)
 	require.Equal(t, createUser.FullName, user.FullName)
 	require.Equal(t, createUser.Username, user.Username)
 	require.Equal(t, createUser.Email, user.Email)
-	require.Equal(t, createUser.HashedPassword, user.HashedPassword)
+	require.Equal(t, createUser.HashedPassword, hashedPassword)
 }
 
 func Test_Should_CreateUser_When_SendParameters_Then_FailedCrypto(t *testing.T) {
@@ -69,17 +72,14 @@ func Test_Should_CreateUser_When_SendParameters_Then_FailedCrypto(t *testing.T) 
 	defer teardown()
 
 	mockCrypto.EXPECT().HashPassword(gomock.Any()).Return("", errors.New(msgErrorHashedPassword)).AnyTimes()
+	user, _, err := randomUser(mockCrypto)
+	require.Error(t, err)
 
 	mockUidGen.EXPECT().New().Return(uuid.UUID{}).AnyTimes()
 
 	mockRepository.EXPECT().CreateUser(gomock.Any()).Return(nil, nil).AnyTimes()
 
-	createUser, err := userService.CreateUser(
-		random.Owner(),
-		random.String(6),
-		random.Owner(),
-		random.Email(),
-	)
+	createUser, err := userService.CreateUser(user)
 
 	require.Error(t, err)
 	require.Empty(t, createUser)
@@ -95,14 +95,13 @@ func Test_Should_CreateUserDuplicate_When_SendDuplicateName_Then_ErrorUniqueViol
 	mockUidGen.EXPECT().New().Return(uuid.UUID{}).AnyTimes()
 
 	mockRepository.EXPECT().CreateUser(gomock.Any()).Return(nil, &pq.Error{Code: "23505"}).AnyTimes()
+	user, _, err := randomUser(mockCrypto)
 
-	createUser, err := userService.CreateUser(
-		random.Owner(),
-		random.String(6),
-		random.Owner(),
-		random.Email(),
-	)
+	require.NoError(t, err)
+
+	createUser, err := userService.CreateUser(user)
 	pqError := err.(*pq.Error)
+
 	require.Error(t, err)
 	require.Empty(t, createUser)
 	require.Equal(t, pqError.Code.Name(), "unique_violation")

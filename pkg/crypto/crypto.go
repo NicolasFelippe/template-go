@@ -1,8 +1,13 @@
 package crypto
 
 import (
-	"fmt"
+	"github.com/pkg/errors"
 	"golang.org/x/crypto/bcrypt"
+	domainErrors "template-go/internal/core/domain/errors"
+)
+
+const (
+	hashError = "Error in create hash password"
 )
 
 type Crypto interface {
@@ -19,11 +24,15 @@ func New() Crypto {
 func (u crypto) HashPassword(password string) (string, error) {
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
-		return "", fmt.Errorf("failed to has crypto: %w", err)
+		return "", domainErrors.NewAppError(errors.Wrap(err, hashError), domainErrors.HashError)
 	}
 	return string(hashedPassword), nil
 }
 
 func (u crypto) CheckPassword(password string, hashedPassword string) error {
-	return bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(password))
+	err := bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(password))
+	if err != nil {
+		return domainErrors.NewAppError(err, domainErrors.HashError)
+	}
+	return nil
 }
