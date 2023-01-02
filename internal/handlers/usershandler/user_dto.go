@@ -1,4 +1,4 @@
-package users_handler
+package usershandler
 
 import (
 	"template-go/internal/core/domain"
@@ -14,7 +14,7 @@ type ResponseCreateUserDTO struct {
 	CreatedAt         time.Time `json:"created_at"`
 }
 
-type RequestUserDTO struct {
+type requestUserDTO struct {
 	Username string `json:"username" binding:"required,alphanum"`
 	Password string `json:"password" binding:"required,min=6"`
 	FullName string `json:"full_name" binding:"required"`

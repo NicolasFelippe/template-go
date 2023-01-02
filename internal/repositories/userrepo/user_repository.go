@@ -1,4 +1,4 @@
-package user
+package userrepo
 
 import (
 	"context"
@@ -65,4 +65,21 @@ func (userRepository UserRepository) Users(limit, offset *int) ([]*domain.User, 
 		})
 	}
 	return users, nil
+}
+
+func (userRepository UserRepository) GetUserByUsername(username string) (*domain.User, error) {
+	result, err := userRepository.store.GetUser(context.Background(), username)
+	if err != nil {
+		return nil, err
+	}
+	user := &domain.User{
+		ID:                result.ID.String(),
+		FullName:          result.FullName,
+		Username:          result.Username,
+		Email:             result.Email,
+		HashedPassword:    result.HashedPassword,
+		PasswordChangedAt: result.PasswordChangedAt,
+		CreatedAt:         result.CreatedAt,
+	}
+	return user, nil
 }

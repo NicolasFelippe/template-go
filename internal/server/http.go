@@ -15,11 +15,11 @@ type Server struct {
 	router     *gin.Engine
 }
 
-func NewServer(projectConfiguration config.Config, store db.Store, tokenMaker makertoken.Maker) (*Server, error) {
-	router := SetupRouter(store)
+func NewServer(config config.Config, store db.Store, tokenMaker makertoken.Maker) (*Server, error) {
+	router := SetupRouter(store, tokenMaker, config)
 
 	server := &Server{
-		config:     projectConfiguration,
+		config:     config,
 		store:      store,
 		router:     router,
 		tokenMaker: tokenMaker,
@@ -31,9 +31,10 @@ func (srv *Server) Start() error {
 	return srv.router.Run(srv.config.HTTPServerAddress)
 }
 
-func SetupRouter(store db.Store) *gin.Engine {
+func SetupRouter(store db.Store, tokenMaker makertoken.Maker, config config.Config) *gin.Engine {
 	router := gin.Default()
 	routes.InitUserRoutes(router, store)
 	routes.InitGraphQlRoutes(router, store)
+	routes.InitAuthRoutes(router, store, tokenMaker, config)
 	return router
 }

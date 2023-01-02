@@ -1,10 +1,11 @@
-package users_handler
+package usershandler
 
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/lib/pq"
 	"net/http"
 	"template-go/internal/core/ports"
+	"template-go/internal/handlers/helpers"
 )
 
 type UserHTTPHandler struct {
@@ -13,14 +14,14 @@ type UserHTTPHandler struct {
 
 func NewUserHTTPHandler(userService ports.UserService) *UserHTTPHandler {
 	return &UserHTTPHandler{
-		userService: userService,
+		userService,
 	}
 }
 
 func (hdl *UserHTTPHandler) CreateUser(ctx *gin.Context) {
-	var req RequestUserDTO
+	var req requestUserDTO
 	if err := ctx.ShouldBindJSON(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, errorResponse(err))
+		ctx.JSON(http.StatusBadRequest, helpers.ErrorResponse(err))
 		return
 	}
 
@@ -35,11 +36,11 @@ func (hdl *UserHTTPHandler) CreateUser(ctx *gin.Context) {
 		if pqErr, ok := err.(*pq.Error); ok {
 			switch pqErr.Code.Name() {
 			case "unique_violation":
-				ctx.JSON(http.StatusForbidden, errorResponse(err))
+				ctx.JSON(http.StatusForbidden, helpers.ErrorResponse(err))
 				return
 			}
 		}
-		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		ctx.JSON(http.StatusInternalServerError, helpers.ErrorResponse(err))
 		return
 	}
 
@@ -52,7 +53,7 @@ func (hdl *UserHTTPHandler) CreateUser(ctx *gin.Context) {
 func (hdl *UserHTTPHandler) ListUsers(ctx *gin.Context) {
 	var req listUsersRequest
 	if err := ctx.ShouldBindQuery(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, errorResponse(err))
+		ctx.JSON(http.StatusBadRequest, helpers.ErrorResponse(err))
 		return
 	}
 
@@ -63,7 +64,7 @@ func (hdl *UserHTTPHandler) ListUsers(ctx *gin.Context) {
 	)
 
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		ctx.JSON(http.StatusInternalServerError, helpers.ErrorResponse(err))
 		return
 	}
 
@@ -71,8 +72,4 @@ func (hdl *UserHTTPHandler) ListUsers(ctx *gin.Context) {
 	//rsp.FromDomain(result)
 
 	ctx.JSON(http.StatusOK, result)
-}
-
-func errorResponse(err error) gin.H {
-	return gin.H{"error": err.Error()}
 }

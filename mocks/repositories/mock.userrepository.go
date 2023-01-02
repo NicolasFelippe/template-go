@@ -49,6 +49,21 @@ func (mr *MockUserRepositoryMockRecorder) CreateUser(arg0 interface{}) *gomock.C
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateUser", reflect.TypeOf((*MockUserRepository)(nil).CreateUser), arg0)
 }
 
+// GetUserByUsername mocks base method.
+func (m *MockUserRepository) GetUserByUsername(arg0 string) (*domain.User, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetUserByUsername", arg0)
+	ret0, _ := ret[0].(*domain.User)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetUserByUsername indicates an expected call of GetUserByUsername.
+func (mr *MockUserRepositoryMockRecorder) GetUserByUsername(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserByUsername", reflect.TypeOf((*MockUserRepository)(nil).GetUserByUsername), arg0)
+}
+
 // Users mocks base method.
 func (m *MockUserRepository) Users(arg0, arg1 *int) ([]*domain.User, error) {
 	m.ctrl.T.Helper()

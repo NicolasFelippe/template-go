@@ -14,7 +14,7 @@ import (
 func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) (*model.User, error) {
 	user, err := r.UserService.CreateUser(input.Username, input.Password, input.FullName, input.Email)
 	if err != nil {
-		return nil, fmt.Errorf("error inserting new user: %v", err)
+		return nil, fmt.Errorf("error inserting new userservice: %v", err)
 	}
 	userModel := &model.User{
 		Username: user.Username,

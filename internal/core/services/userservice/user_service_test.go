@@ -1,4 +1,4 @@
-package user_service
+package userservice
 
 import (
 	"errors"
@@ -17,7 +17,7 @@ import (
 var mockRepository *userrepositorymock.MockUserRepository
 var mockCrypto *cryptomock.MockCrypto
 var mockUidGen *uidgenmock.MockUIDGen
-var userService *service
+var userService *UserService
 
 func setup(t *testing.T) func() {
 	ctrl := gomock.NewController(t)

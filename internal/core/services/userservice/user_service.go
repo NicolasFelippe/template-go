@@ -1,4 +1,4 @@
-package user_service
+package userservice
 
 import (
 	"template-go/internal/core/domain"
@@ -7,7 +7,7 @@ import (
 	"template-go/pkg/uidgen"
 )
 
-type service struct {
+type UserService struct {
 	userRepository ports.UserRepository
 	uidGen         uidgen.UIDGen
 	crypto         crypto.Crypto
@@ -17,15 +17,15 @@ func New(
 	userRepository ports.UserRepository,
 	uidGen uidgen.UIDGen,
 	crypto crypto.Crypto,
-) *service {
-	return &service{
+) *UserService {
+	return &UserService{
 		userRepository: userRepository,
 		uidGen:         uidGen,
 		crypto:         crypto,
 	}
 }
 
-func (srv *service) CreateUser(
+func (srv *UserService) CreateUser(
 	username string,
 	password string,
 	fullName string,
@@ -54,6 +54,10 @@ func (srv *service) CreateUser(
 	return result, nil
 }
 
-func (srv *service) ListUsers(limit, offset *int) ([]*domain.User, error) {
+func (srv *UserService) ListUsers(limit, offset *int) ([]*domain.User, error) {
 	return srv.userRepository.Users(limit, offset)
+}
+
+func (srv *UserService) GetUserByUsername(username string) (*domain.User, error) {
+	return srv.userRepository.GetUserByUsername(username)
 }

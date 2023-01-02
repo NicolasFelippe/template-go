@@ -139,7 +139,7 @@ func TestCreateUserAPI(t *testing.T) {
 		{
 			name: "InvalidUsername",
 			body: gin.H{
-				"username":  "invalid-user#1",
+				"username":  "invalid-userservice#1",
 				"password":  password,
 				"full_name": user.FullName,
 				"email":     user.Email,
