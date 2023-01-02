@@ -5,56 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add graphql">
-      <change afterPath="$PROJECT_DIR$/internal/core/domain/authentication/service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/core/domain/errors/errors.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/core/domain/sessions/repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/core/domain/sessions/service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/core/domain/sessions/sessions.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/core/domain/users/repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/core/domain/users/service.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/handlers/authhandler/mapper.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/handlers/authhandler/reponses.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/handlers/authhandler/validator.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/handlers/errors/errors.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/handlers/usershandler/mapper.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/handlers/usershandler/responses.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/handlers/usershandler/validator.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repositories/userrepo/mapper.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/server/middlewares/auth_middleware.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/domain/authentication.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/domain/authentication/authentications.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/domain/session.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/domain/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/domain/users/users.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/ports/repositories.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/ports/services.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/services/authenticationservice/authentication_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/authenticationservice/authentication_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/services/sessionservice/session_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/sessionservice/session_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/services/userservice/user_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/userservice/user_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/services/userservice/user_service_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/services/userservice/user_service_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/graph/resolver.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/graph/resolver.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/graph/schema.resolvers.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/graph/schema.resolvers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/handlers/authhandler/auth_http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/authhandler/auth_http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/handlers/authhandler/login_request_dto.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/handlers/helpers/error_response.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/handlers/usershandler/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/usershandler/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/handlers/usershandler/user_dto.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/usershandler/user_dto.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/repositories/sessionrepo/session.repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/sessionrepo/session_repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/repositories/userrepo/user_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repositories/userrepo/user_repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/handlers/errors/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/handlers/errors/errors.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/server/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/server/routes/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/routes/users.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/server/user_http_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/user_http_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/sqlc/repositories/user.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/repositories/user.sql.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/sqlc/repositories/user_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/sqlc/repositories/user_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mocks/pkg/uidgen/mock.uidgen.go" beforeDir="false" afterPath="$PROJECT_DIR$/mocks/pkg/uidgen/mock.uidgen.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mocks/repositories/mock.userrepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/mocks/repositories/mock.userrepository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/crypto/crypto.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/crypto/crypto.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/makertoken/paseto/paseto_maker.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/makertoken/paseto/paseto_maker.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/makertoken/payload.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/makertoken/payload.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/uidgen/uidgen.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/uidgen/uidgen.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/uidgen/uidgen_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/uidgen/uidgen_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/server/middlewares/auth_middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/middlewares/auth_middleware.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/server/routes/graphql.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/server/routes/graphql.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +175,7 @@
       <workItem from="1672455626768" duration="5088000" />
       <workItem from="1672486247163" duration="8943000" />
       <workItem from="1672621940653" duration="6766000" />
-      <workItem from="1672652487747" duration="14497000" />
+      <workItem from="1672652487747" duration="16325000" />
     </task>
     <task id="LOCAL-00001" summary="init project hexagonal">
       <created>1672265107376</created>
@@ -353,7 +308,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/internal/handlers/errors/errors.go</url>
-          <line>52</line>
+          <line>42</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
@@ -365,11 +320,6 @@
           <url>file://$PROJECT_DIR$/internal/handlers/usershandler/http.go</url>
           <line>20</line>
           <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/handlers/errors/errors.go</url>
-          <line>15</line>
-          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

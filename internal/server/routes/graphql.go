@@ -4,8 +4,8 @@ import (
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/gin-gonic/gin"
-	user_service "template-go/internal/core/services/userservice"
-	graph "template-go/internal/graph"
+	"template-go/internal/core/services/userservice"
+	"template-go/internal/graph"
 	"template-go/internal/repositories/userrepo"
 	db "template-go/internal/sqlc/repositories"
 	"template-go/pkg/crypto"
@@ -23,7 +23,7 @@ func graphqlHandler(store *db.Store) gin.HandlerFunc {
 	// NewExecutableSchema and Config are in the generated.go file
 	// Resolver is in the resolver.go file
 	repository := userrepo.New(*store, uidgen.New())
-	service := user_service.New(repository, uidgen.New(), crypto.New())
+	service := userservice.New(repository, uidgen.New(), crypto.New())
 
 	h := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{UserService: service}}))
 	return func(c *gin.Context) {

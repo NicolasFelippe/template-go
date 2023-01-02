@@ -40,7 +40,7 @@ func SetupRouter(store db.Store, tokenMaker makertoken.Maker, config config.Conf
 	authRoutes := routerDefault.Group("/api/v1").Use(middlewares.AuthMiddleware(tokenMaker))
 
 	routes.InitUserRoutes(routerDefault, authRoutes, store)
-	//routes.InitGraphQlRoutes(router, authRoutes, store)
-	//routes.InitAuthRoutes(router, authRoutes, store, tokenMaker, config)
+	routes.InitGraphQlRoutes(routerDefault, store)
+	routes.InitAuthRoutes(routerDefault, store, tokenMaker, config)
 	return routerDefault
 }
