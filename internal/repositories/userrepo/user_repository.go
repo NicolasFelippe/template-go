@@ -2,10 +2,11 @@ package userrepo
 
 import (
 	"context"
+	"database/sql"
+	"fmt"
 	"github.com/lib/pq"
 	domainErrors "template-go/internal/core/domain/errors"
 	domain "template-go/internal/core/domain/users"
-	"template-go/internal/logger"
 	db "template-go/internal/sqlc/repositories"
 	"template-go/pkg/uidgen"
 )
@@ -62,16 +63,12 @@ func (userRepository UserRepository) ListUsersByPagination(limit, offset *int) (
 
 func (userRepository UserRepository) GetUserByUsername(username string) (*domain.User, error) {
 	result, err := userRepository.store.GetUser(context.Background(), username)
-
-	if pqErr, ok := err.(*pq.Error); ok {
-		test := pqErr.Code.Name()
-		logger.Logger.Info(test)
-		//switch pqErr.Code.Name() {
-		//case "unique_violation":
-		//	appErr := domainErrors.NewAppError(pqErr, domainErrors.RepositoryError)
-		//	return nil, appErr
-		//}
-		appErr := domainErrors.NewAppErrorWithType(domainErrors.NotFound)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			appErr := domainErrors.NewAppError(fmt.Errorf("user %s not found", username), domainErrors.NotFound)
+			return nil, appErr
+		}
+		appErr := domainErrors.NewAppError(err, domainErrors.RepositoryError)
 		return nil, appErr
 	}
 
