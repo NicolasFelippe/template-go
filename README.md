@@ -27,6 +27,16 @@ go mod tidy
 make server
 ```
 
+### Docs api Insominia
+ ./docs/api
+
+### Graphql playground
+http://localhost:8080/graph/v1
+
+### API Http playground
+http://localhost:8080/api/v1
+
+
 ### Run docker
 
 1. docker network create template-network
