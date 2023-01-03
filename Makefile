@@ -28,6 +28,9 @@ major:
 	- @echo "New Version: $(major).0.0"
 	- @printf $(major).0.0 > VERSION
 
+postgres:
+	docker run --name postgres12 --network bank-network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=ORiBLEcTUrdS -d postgres:12-alpine
+
 createdb:
 	docker exec -it postgres12 createdb --username=root --owner=root go_template
 
@@ -58,7 +61,19 @@ migratedown:
 migratedown1:
 	migrate -path db/migration -database "$(DB_URL)" --verbose down 1
 
+dockerclear:
+	docker compose down && docker rmi template-go_api
+
+docker-build:
+	docker build -t template_go:latest .
+
+docker-run:
+	docker run --name template_go --network template-network -p 8080:8080 -e DB_SOURCE="$(DB_URL)" -e GIN_MODE=release templatego:latest
+
+server:
+	go run cmd/http/main.go
+
 test:
 	go test -v -cover ./...
 
-.PHONY: sqlc mock gqlgen mock1 migrateup migrateup1 migratedown migratedown1 create-migration patch minor major test
+.PHONY: sqlc mock server dockerclear gqlgen mock1 migrateup migrateup1 migratedown migratedown1 create-migration patch minor major test

@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add graphql" />
+    <list default="true" id="4777da76-6d4e-4a1f-8aee-a5125e4f42fd" name="Changes" comment="add graphql">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/start.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/wait-for.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/http/internal/project.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/http/internal/project.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +36,7 @@
   <component name="GoLibraries">
     <option name="urls">
       <list>
-        <option value="file://$PROJECT_DIR$/../../go/" />
+        <option value="file://$USER_HOME$/go/" />
       </list>
     </option>
     <option name="useGoPathFromSystemEnvironment" value="false" />
@@ -51,15 +60,19 @@
     &quot;RunOnceActivity.go.format.on.save.advertiser.fired&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;configurable..is.expanded&quot;: &quot;true&quot;,
+    &quot;configurable.GoLibrariesConfigurable.is.expanded&quot;: &quot;true&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nick&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -76,14 +89,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go" />
+      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\scripts" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\core\domain\sessions" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\core\domain\authentication" />
       <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\core\domain\users" />
-      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\internal\core\services\session" />
-      <recent name="\\wsl$\Ubuntu\home\nick\git\template-go\pkg\token\paseto" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build template-go/cmd/http">
+  <component name="RunManager" selected="Docker.Dockerfile">
     <configuration name="go build template-go/cmd/http" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="template-go" />
       <working_directory value="$PROJECT_DIR$" />
@@ -139,12 +152,23 @@
       <framework value="gotest" />
       <method v="2" />
     </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.go test template-go/internal/core/services/userservice" />
-        <item itemvalue="Go Test.Test_Should_CreateUser_When_SendParameters_Then_Success in template-go/internal/core/services/userservice" />
-        <item itemvalue="Go Test.go test template-go/internal/server" />
-        <item itemvalue="Go Test.TestCreateUserAPI in template-go/internal/server" />
+        <item itemvalue="Docker.Dockerfile" />
       </list>
     </recent_temporary>
   </component>
@@ -169,7 +193,16 @@
       <workItem from="1672455626768" duration="5088000" />
       <workItem from="1672486247163" duration="8943000" />
       <workItem from="1672621940653" duration="6766000" />
-      <workItem from="1672652487747" duration="16928000" />
+      <workItem from="1672652487747" duration="17644000" />
+      <workItem from="1672683881231" duration="657000" />
+      <workItem from="1672684754776" duration="252000" />
+      <workItem from="1672702025059" duration="44000" />
+      <workItem from="1672702349278" duration="362000" />
+      <workItem from="1672703542197" duration="689000" />
+      <workItem from="1672704586476" duration="916000" />
+      <workItem from="1672706195621" duration="1216000" />
+      <workItem from="1672742519746" duration="4436000" />
+      <workItem from="1672747226763" duration="968000" />
     </task>
     <task id="LOCAL-00001" summary="init project hexagonal">
       <created>1672265107376</created>
@@ -271,44 +304,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/core/services/user/user.service_test.go</url>
-          <line>104</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/handlers/authhandler/auth_http.go</url>
-          <line>20</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/repositories/userrepo/user_repository.go</url>
-          <line>65</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/repositories/userrepo/user_repository.go</url>
-          <line>66</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/core/services/userservice/user_service_test.go</url>
-          <line>35</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/handlers/errors/errors.go</url>
-          <line>42</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/server/middlewares/auth_middleware.go</url>
-          <line>20</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/handlers/usershandler/http.go</url>
-          <line>20</line>
-          <option name="timeStamp" value="26" />
+          <url>file://$PROJECT_DIR$/pkg/crypto/crypto.go</url>
+          <line>2</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -318,11 +316,8 @@
       </configuration>
     </watches-manager>
   </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/template_go$go_test_template_go_pkg_crypto.out" NAME="go test template-go/pkg/crypto Coverage Results" MODIFIED="1672445051112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/template_go$TestPasswordError_in_template_go_pkg_crypto.out" NAME="TestPasswordError in template-go/pkg/crypto Coverage Results" MODIFIED="1672444209447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/template_go$go_test_template_go_internal_server__1_.out" NAME="go test template-go/internal/server (1) Coverage Results" MODIFIED="1672426617325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/template_go$go_test_template_go_pkg_uidgen.out" NAME="go test template-go/pkg/uidgen Coverage Results" MODIFIED="1672443906428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/template_go$go_test_template_go_internal_core_services_user_service.out" NAME="go test template-go/internal/core/services/user.service Coverage Results" MODIFIED="1672443753395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
